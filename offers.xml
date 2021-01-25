@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="utf-8"?>
+<offers>
+  <offer>
+    <name>Надставка полу-турбо PT 30</name>
+    <desc/>
+    <price>10 200 руб.</price>
+    <code>0016866</code>
+    <brand>Protherm</brand>
+    <images/>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>130</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.5</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT (L 140) D=140 x 80 мм (35-40 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>8 820 руб.</price>
+    <code>0007957</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/570/e3b88ef1-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/4c4/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88eef-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/df1/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef0-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/89c/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef2-6618-11e7-a2d1-c46e1f000a92.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>140</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>115515</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT SE(L 140) D=140 x 80 мм (35-40 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>10 370 руб.</price>
+    <code>0019823</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/86d/ff13ace5-abd8-11ea-a22b-00155d024004.png</image>
+      <image>/upload/resize_cache/iblock/470/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace6-abd8-11ea-a22b-00155d024004.jpeg</image>
+      <image>/upload/resize_cache/iblock/d55/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace8-abd8-11ea-a22b-00155d024004.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>140</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергонезависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>115511</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT (S) D=100 x 80 мм (7,5-10 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-8 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>6 280 руб.</price>
+    <code>0007959</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/909/e3b88ef1-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/340/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88eef-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/275/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef0-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/59a/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef2-6618-11e7-a2d1-c46e1f000a92.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>100</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT (L) D=130 x 80 мм (16-30 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>8 820 руб.</price>
+    <code>0007956</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/db4/e3b88ef1-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/82c/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88eef-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/c9d/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef0-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/127/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef2-6618-11e7-a2d1-c46e1f000a92.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>130</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>115514</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT SE(M) D=130 x 80 мм (12,5-16 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>10 370 руб.</price>
+    <code>0023641</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/27c/ff13ace5-abd8-11ea-a22b-00155d024004.png</image>
+      <image>/upload/resize_cache/iblock/580/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace6-abd8-11ea-a22b-00155d024004.jpeg</image>
+      <image>/upload/resize_cache/iblock/e34/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace8-abd8-11ea-a22b-00155d024004.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>130</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергонезависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>115509</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Автоматическая пеллетная горелка АПГ-25</name>
+    <desc>Специальный модуль для автоматизированной подготовки и подачи пеллетного топлива в камеру сгорания котла, поддержания баланса температуры теплоносителя и контроля горения. Все пеллетные ГГУ ТЕПЛОДАР проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества. Автоматическая пеллетная горелка АПГ-25 от компании ТЕПЛОДАР - важный элемент безопастности и стабильной работы вашего отопительного оборудования.</desc>
+    <price>71 710 руб.</price>
+    <code>0005031</code>
+    <brand>Теплодар</brand>
+    <images>
+      <image>/upload/iblock/d66/68318628-1155-11e8-a263-00155d011400.png</image>
+      <image>/upload/resize_cache/iblock/694/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/68318629-1155-11e8-a263-00155d011400.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Мощность, кВт</name>
+        <value>25</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>горелка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>36</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>50</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT SE(S) D=100 x 80 мм (7,5-10 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>9 420 руб.</price>
+    <code>0029345</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/846/ff13ace5-abd8-11ea-a22b-00155d024004.png</image>
+      <image>/upload/resize_cache/iblock/05b/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace6-abd8-11ea-a22b-00155d024004.jpeg</image>
+      <image>/upload/resize_cache/iblock/bf6/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace8-abd8-11ea-a22b-00155d024004.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>100</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергонезависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>115508</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Теплоаккумулятор ЕГР-200</name>
+    <desc>Элемент системы отопления, предназначенный для накопления энергии от теплогенераторов с нестабильным периодом работы (твердотопливные котлы, солнечные панели и др.).
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Детали из конструкционной стали с защитным покрытием наружных поверхностей
+- Поддержает температуру отопительной системы при падении мощности котла
+- Усиленная ребрами с внутренней стороны конструкция крышки
+- Препятствует закипанию котла
+- Выравниваются колебания температуры при включении дополнительных потребителей тепла, например, водонагревателя</desc>
+    <price>10 670 руб.</price>
+    <code>0024196</code>
+    <brand>Теплодар</brand>
+    <images>
+      <image>/upload/iblock/155/8a90edd2-bab2-11e9-a213-00155d024004.png</image>
+      <image>/upload/resize_cache/iblock/ae1/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/8a90edd3-bab2-11e9-a213-00155d024004.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>универсальный</value>
+      </prop>
+      <prop>
+        <name>Объём, л</name>
+        <value>200</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>теплоаккумулятор</value>
+      </prop>
+      <prop>
+        <name>Габариты, мм</name>
+        <value>1941x400x400</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>ОК.53.000.00</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>18</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>40</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT SE(L) D=130 x 80 мм (16-30 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price>10 370 руб.</price>
+    <code>0019825</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/0e2/ff13ace5-abd8-11ea-a22b-00155d024004.png</image>
+      <image>/upload/resize_cache/iblock/0ac/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace6-abd8-11ea-a22b-00155d024004.jpeg</image>
+      <image>/upload/resize_cache/iblock/a18/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/ff13ace8-abd8-11ea-a22b-00155d024004.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>130</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергонезависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Артикул производителя</name>
+        <value>115510</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Надставка полу-турбо PT 50</name>
+    <desc/>
+    <price/>
+    <code>0016868</code>
+    <brand>Protherm</brand>
+    <images/>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>180</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>75</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.5</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Автоматическая пеллетная горелка АПГ-42</name>
+    <desc>Специальный модуль для автоматизированной подготовки и подачи пеллетного топлива в камеру сгорания котла, поддержания баланса температуры теплоносителя и контроля горения. Все пеллетные ГГУ ТЕПЛОДАР проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества. Автоматическая пеллетная горелка АПГ-42 от компании ТЕПЛОДАР - важный элемент безопастности и стабильной работы вашего отопительного оборудования.</desc>
+    <price/>
+    <code>0020342</code>
+    <brand>Теплодар</brand>
+    <images>
+      <image>/upload/iblock/8ec/68318628-1155-11e8-a263-00155d011400.png</image>
+      <image>/upload/resize_cache/iblock/17a/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/68318629-1155-11e8-a263-00155d011400.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Мощность, кВт</name>
+        <value>42</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>горелка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>36</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>54</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Надставка полу-турбо PT 20</name>
+    <desc/>
+    <price/>
+    <code>0016865</code>
+    <brand>Protherm</brand>
+    <images/>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>130</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.5</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Надставка полу-турбо PT 40</name>
+    <desc/>
+    <price/>
+    <code>0016867</code>
+    <brand>Protherm</brand>
+    <images/>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>150</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.5</value>
+      </prop>
+    </props>
+  </offer>
+  <offer>
+    <name>Турбонасадка COMFORT (M) D=130 x 80 мм (12,5-16 кВт)</name>
+    <desc>Специальный модуль отопительного устройства для принудительного отвода продуктов сгорания из камеры котла, в следствие чего не требуется организация дымохода естественной тяги. Может стать идеальным решением в условиях, когда монтаж дымохода затруднен, либо имеются проблемы с тягой: недостаточная тяга, "задувание", обратная тяга и др. Все турбонасадки Лемакс проходят тестирование на заводе и в независимых лабораториях, что обеспечивает дополнительные гарантии надежности и качества.    
+
+КЛЮЧЕВЫЕ ОСОБЕННОСТИ:
+- Степень электрозащиты: 1 класс
+- Работает с газовым клапаном SIT NOVA 820
+- Давление на выходе турбонасадки: 40-70 Па
+- Уровень шума работы турбонасадки: 50 Дб 
+- Разряжение, создаваемое турбонасадкой: 5-12 Па
+- Функция блокировки котла при выключенной турбонасадке</desc>
+    <price/>
+    <code>0007958</code>
+    <brand>Лемакс</brand>
+    <images>
+      <image>/upload/iblock/7f3/e3b88ef1-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/163/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88eef-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/ecc/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef0-6618-11e7-a2d1-c46e1f000a92.png</image>
+      <image>/upload/resize_cache/iblock/05e/284_284_1d7a58ff99b324185ccb5ad5dfbdb5e85/e3b88ef2-6618-11e7-a2d1-c46e1f000a92.png</image>
+    </images>
+    <props>
+      <prop>
+        <name>Диаметр дымохода, мм</name>
+        <value>130</value>
+      </prop>
+      <prop>
+        <name>Диаметр отводящего патрубка, мм</name>
+        <value>80</value>
+      </prop>
+      <prop>
+        <name>Совместимость с котлами</name>
+        <value>энергозависимый</value>
+      </prop>
+      <prop>
+        <name>Напряжение электропитания, В</name>
+        <value>220</value>
+      </prop>
+      <prop>
+        <name>Мощность, Вт</name>
+        <value>40</value>
+      </prop>
+      <prop>
+        <name>Тип</name>
+        <value>турбонасадка</value>
+      </prop>
+      <prop>
+        <name>Родина бренда</name>
+        <value>Россия</value>
+      </prop>
+      <prop>
+        <name>Гарантия, мес.</name>
+        <value>12</value>
+      </prop>
+      <prop>
+        <name>Вес, кг</name>
+        <value>3.8</value>
+      </prop>
+    </props>
+  </offer>
+</offers>
