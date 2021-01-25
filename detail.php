@@ -2,7 +2,7 @@
 class Offer
 {
     public string $name;
-    // public string $category;
+    public string $categoryId;
     public string $article;
     public string $brand;
     public string $description;
@@ -14,17 +14,22 @@ class Offer
     private DOMDocument $html;
     private DOMXPath $parser;
 
-    public function __construct(string $url, DOMDocument $xml)
+    public function __construct(string $url, int $parentId, DOMDocument $xml)
     {
         // $this->category = $parent['name'];
         // $this->category = "Отопление";
 
         $this->html = new DOMDocument();
         libxml_use_internal_errors(true);
-        $page = file_get_contents($url);
-        $this->html->loadHTML($page);
-        // $this->html->loadHTMLFile('detail.html');//для ручного режима
-        $this->parser = new DOMXPath($this->html);
+        try{
+            $page = file_get_contents($url);
+            $this->html->loadHTML($page);
+            $this->parser = new DOMXPath($this->html);
+        }
+        catch(Exception $e){
+
+        }
+        $this->categoryId = $parentId;
         $this->images = array();
         $this->properties = array();
         $this->xml = $xml;
@@ -92,12 +97,14 @@ class Offer
         $brand = $this->xml->createElement('brand', $this->brand);
         $images = $this->xml->createElement('images');
         $properties = $this->xml->createElement('props');
+        $category = $this->xml->createElement('categoryId', $this->categoryId);
         
         $this->xml->appendChild($root);
         $root->appendChild($name);
-        $root->appendChild($description);
-        $root->appendChild($price);
+        $root->appendChild($category);
         $root->appendChild($code);
+        $root->appendChild($price);
+        $root->appendChild($description);
         $root->appendChild($brand);
         $root->appendChild($images);
         $root->appendChild($properties);
