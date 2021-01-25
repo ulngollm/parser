@@ -1,6 +1,6 @@
 <?php
+define('DOMAIN', 'https://andimart.ru');
 $file = file_get_contents('https://andimart.ru/catalog/');
-$domain = 'https://andimart.ru';
 // file_put_contents('page.html', $file);
 $html = new DOMDocument();
 libxml_use_internal_errors(true);
@@ -11,9 +11,7 @@ $parser = new DOMXPath($html);
 $sections = $parser->query("//ul[@class='nav__list']/li[position()<4]//ul[@class='nav__child-group']/li[position()>1]/a");
 $section_links = array();
 foreach ($sections as $sect) {
-    $section = array();
-    $section['name'] = trim($sect->nodeValue);
-    $section['url'] = $domain . $sect->attributes->getNamedItem('href')->nodeValue;
+    $section = set_section_info($sect);
     $section['elements'] = array();
     array_push($section_links, $section);
 }
@@ -24,12 +22,38 @@ foreach ($section_links as &$section) {
     $elements = array();
     $base_url = $section['url'];
     get_offers_list($base_url, $elements);
-    $section['elements'] = $elements;
+    if ($elements) $section['elements'] = $elements;
 }
+
+
+$root = $parser->query('//ul[@class="nav__list"]/li[position() < 4]');
+foreach ($root as $root_category) {
+    $category = $parser->query('./a', $root_category)->item(0);
+    $section = set_section_info($category);
+    array_push($section_links, $section);
+
+    $subsections = $parser->query('.//div[@class="nav__child"]//ul[@class="nav__child-group"]', $root_category);
+    foreach ($subsections as $subsection) {
+        $category = $parser->query('./li[position() = 1]/a', $subsection)->item(0);
+        $section = set_section_info($category);
+        array_push($section_links, $section);
+    }
+}
+
 print_r($section_links);
+
+function set_section_info($node)
+{
+    $section = array();
+    $section['name'] = $node->nodeValue;
+    $section['url'] = DOMAIN . $node->getAttribute('href');
+    get_section_code($section);
+    return $section;
+}
+
 echo memory_get_peak_usage(true) / 1024;
-// $data = json_encode($section_links);
-// file_put_contents('structure.json', $data);
+$data = json_encode($section_links);
+file_put_contents('structure.json', $data);
 
 //че делать с пагинацией
 function get_offers_list(string $url, array &$list,  int $page = 1)
@@ -59,4 +83,16 @@ function get_offers_list(string $url, array &$list,  int $page = 1)
     }
 }
 
-
+function get_section_code(&$section)
+{
+    $path = parse_url($section['url']);
+    $section_path = trim($path['path'], "/");
+    $path_arr = explode("/", $section_path);
+    array_shift($path_arr); //удалить catalog из пути
+    $section_code = array_pop($path_arr);
+    $section['code'] = md5($section_code);
+    if (count($path_arr) != 0) {
+        $parent_section = array_pop($path_arr);
+        $section['parent_code'] = md5($parent_section);
+    }
+}
