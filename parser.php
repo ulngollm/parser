@@ -16,6 +16,7 @@ $root->appendChild($offers);
 
 echo memory_get_usage(true) . "\n";
 foreach ($sections as $section) {
+    $code = $section['code'];
     $category = $xml->createElement('category', $section['name']);
     $categories->appendChild($category);
     $category_code = $xml->createAttribute('id');
@@ -30,7 +31,7 @@ foreach ($sections as $section) {
         foreach ($section['elements'] as $url) {
             $url = DOMAIN . $url;
             print_r($url);
-            $offer = new Offer($url, $categoryID, $xml);
+            $offer = new Offer($url, $code, $xml);
             $offer_xml = $offer->get_xml();
             $offers->appendChild($offer_xml);
         }
