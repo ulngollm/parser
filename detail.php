@@ -1,8 +1,9 @@
 <?php
 class Offer
 {
+
     public string $name;
-    public string $parent_code;
+    public string $category_code;
     public string $article;
     public string $brand;
     public string $description;
@@ -14,28 +15,22 @@ class Offer
     private DOMDocument $html;
     private DOMXPath $parser;
 
-    public function __construct(string $url, string $parent_code, DOMDocument $xml)
+    public function __construct(string $url, string $category_code, DOMDocument $xml)
     {
-        // $this->category = $parent['name'];
-        // $this->category = "Отопление";
-
         $this->html = new DOMDocument();
         libxml_use_internal_errors(true);
-        try {
-            $id = curl_init($url);
-            curl_setopt($id, CURLOPT_RETURNTRANSFER, 1);
-            $page = curl_exec($id);
-            curl_close($id);
-            $this->html->loadHTML($page);
-            $this->parser = new DOMXPath($this->html);
-        } catch (Exception $e) {
-        }
-        $this->parent_code = $parent_code;
+
+        $id = curl_init($url);
+        curl_setopt($id, CURLOPT_RETURNTRANSFER, 1);
+        $page = curl_exec($id);
+        curl_close($id);
+        $this->html->loadHTML($page);
+        $this->parser = new DOMXPath($this->html);
+
+        $this->category_code = $category_code;
         $this->images = array();
         $this->properties = array();
         $this->xml = $xml;
-        // $this->xml = new DOMDocument('1.0', 'utf-8');
-        // $this->xml->formatOutput = true;
 
         $this->set_name();
         $this->set_price();
@@ -47,20 +42,20 @@ class Offer
     }
     public function set_name()
     {
-        $name = $this->parser->query("//h1/text()");
-        $this->name = $name[0]->textContent;
+        $name = $this->parser->query("//h1/text()")->item(0);
+        $this->name = $name->textContent;
     }
     public function set_images()
     {
-        $images = $this->parser->query("//div[@class='product-card__thumb-in']/img/@src");
+        $images = $this->parser->query("//div[@class='product-card__image']/a/@href");
         foreach ($images as $image) {
-            array_push($this->images, $image->nodeValue);
+            array_push($this->images, DOMAIN . $image->nodeValue);
         }
     }
     public function set_description()
     {
-        $description = $this->parser->query("//div[@id='product-descr']//p");
-        $this->description = trim($description[0]->nodeValue);
+        $description = $this->parser->query("//div[@id='product-descr']//p")->item(0);
+        $this->description = trim($description->nodeValue);
     }
     public function set_properties()
     {
@@ -77,17 +72,17 @@ class Offer
     public function set_price()
     {
         $price = $this->parser->query("//div[@class='product-card__price']/text()[3]")->item(0);
-        $this->price = trim($price[0]->nodeValue) || "";
+        $this->price = ($price) ? trim($price->nodeValue) : "";
     }
     public function set_article()
     {
-        $article = $this->parser->query('//div[@class="product-card__prop"][1]/text()[2]');
-        $this->article = trim($article[0]->nodeValue);
+        $article = $this->parser->query('//div[@class="product-card__prop"][1]/text()[2]')->item(0);
+        $this->article = trim($article->nodeValue);
     }
     public function set_brand()
     {
-        $brand = $this->parser->query('//div[@class="product-card__prop"][2]/text()[2]');
-        $this->brand = trim($brand[0]->nodeValue);
+        $brand = $this->parser->query('//div[@class="product-card__prop"][2]/text()[2]')->item(0);
+        $this->brand = trim($brand->nodeValue);
     }
     public function get_xml()
     {
@@ -99,7 +94,7 @@ class Offer
         $brand = $this->xml->createElement('brand', $this->brand);
         $images = $this->xml->createElement('images');
         $properties = $this->xml->createElement('props');
-        $category = $this->xml->createElement('categoryId', $this->parent_code);
+        $category = $this->xml->createElement('categoryId', $this->category_code);
 
         $this->xml->appendChild($root);
         $root->appendChild($name);
@@ -116,10 +111,16 @@ class Offer
             $images->appendChild($img);
         }
         foreach ($this->properties as $property) {
+            $name = $property[0];
+            $value = $property[1];
+            $code = md5($name);
             $prop = $this->xml->createElement('prop');
-            $propName = $this->xml->createElement('name', $property[0]);
-            $propValue = $this->xml->createElement('value', $property[1]);
+            $propName = $this->xml->createElement('name', $name);
+            $propCode = $this->xml->createAttribute('id');
+            $propCode->value =$code;
+            $propValue = $this->xml->createElement('value', $value);
             $prop->appendChild($propName);
+            $prop->appendChild($propCode);
             $prop->appendChild($propValue);
             $properties->appendChild($prop);
         }
