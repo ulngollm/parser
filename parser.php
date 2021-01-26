@@ -36,7 +36,7 @@ foreach ($sections as $section) {
             $offers->appendChild($offer_xml);
         }
     }
+    $xml->save('offers.xml');
 }
 echo memory_get_peak_usage(true) / 1024;
 
-$xml->save('offers.xml');
