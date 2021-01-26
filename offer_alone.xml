@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog>
+  <categories/>
+  <offers>
+    <offer>
+      <name>Надставка полу-турбо PT 50</name>
+      <categoryId>123</categoryId>
+      <code>0016868</code>
+      <price/>
+      <desc/>
+      <brand>Protherm</brand>
+      <images>
+        <image>https://andimart.ru/upload/iblock/f64/12dc0864-caa2-11e7-a245-00155d011400.jpeg</image>
+      </images>
+      <props>
+        <prop id="7571b9a031546ce7e44cb8b97edf52b7">
+          <name>Диаметр дымохода, мм</name>
+          <value>180</value>
+        </prop>
+        <prop id="d68e3f2faa57272cc2615c0b05ad6f7c">
+          <name>Диаметр отводящего патрубка, мм</name>
+          <value>80</value>
+        </prop>
+        <prop id="b21528f0b67fc0bf88ceca76e77ffed8">
+          <name>Совместимость с котлами</name>
+          <value>энергозависимый</value>
+        </prop>
+        <prop id="e2ac5ea74fe1dd1531f166ccc581ecea">
+          <name>Напряжение электропитания, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="7d1ce419cb0d3dfdd7ebcdc91ffa0492">
+          <name>Мощность, Вт</name>
+          <value>75</value>
+        </prop>
+        <prop id="345805b88b9ca1e189fa11ea817e5666">
+          <name>Тип</name>
+          <value>турбонасадка</value>
+        </prop>
+        <prop id="54002ce317633cab7629fe5dcce96b6c">
+          <name>Родина бренда</name>
+          <value>Россия</value>
+        </prop>
+        <prop id="e79726a20e1d067304124d71fad3ffd6">
+          <name>Гарантия, мес.</name>
+          <value>12</value>
+        </prop>
+        <prop id="2a05ac020a97f4c9f0828714b5e2d5a4">
+          <name>Вес, кг</name>
+          <value>3.5</value>
+        </prop>
+      </props>
+    </offer>
+  </offers>
+</catalog>
