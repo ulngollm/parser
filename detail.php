@@ -20,13 +20,14 @@ class Offer
         $this->html = new DOMDocument();
         libxml_use_internal_errors(true);
 
-        $id = curl_init($url);
-        curl_setopt($id, CURLOPT_RETURNTRANSFER, 1);
-        $page = curl_exec($id);
-        curl_close($id);
-        $this->html->loadHTML($page);
-        $this->parser = new DOMXPath($this->html);
-
+        try {
+            $id = curl_init($url);
+            curl_setopt($id, CURLOPT_RETURNTRANSFER, 1);
+            $page = curl_exec($id);
+            curl_close($id);
+            $this->html->loadHTML($page);
+            $this->parser = new DOMXPath($this->html);
+        } catch (Exception $e) {}
         $this->category_code = $category_code;
         $this->images = array();
         $this->properties = array();
@@ -43,7 +44,7 @@ class Offer
     public function set_name()
     {
         $name = $this->parser->query("//h1/text()")->item(0);
-        $this->name = $name->textContent;
+        $this->name = ($name)? $name->textContent : "";
     }
     public function set_images()
     {
@@ -55,7 +56,7 @@ class Offer
     public function set_description()
     {
         $description = $this->parser->query("//div[@id='product-descr']//p")->item(0);
-        $this->description = trim($description->nodeValue);
+        $this->description = ($description) ? trim($description->nodeValue) : "";
     }
     public function set_properties()
     {
@@ -77,12 +78,12 @@ class Offer
     public function set_article()
     {
         $article = $this->parser->query('//div[@class="product-card__prop"][1]/text()[2]')->item(0);
-        $this->article = trim($article->nodeValue);
+        $this->article = ($article)? trim($article->nodeValue):"";
     }
     public function set_brand()
     {
         $brand = $this->parser->query('//div[@class="product-card__prop"][2]/text()[2]')->item(0);
-        $this->brand = trim($brand->nodeValue);
+        $this->brand = ($brand)? trim($brand->nodeValue):"";
     }
     public function get_xml()
     {
