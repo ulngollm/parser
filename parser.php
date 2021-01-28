@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('error_log', __DIR__ . '/parser_log.log');
 define('DOMAIN', 'https://andimart.ru');
 include_once('detail.php');
+libxml_use_internal_errors(true);
 $str = file_get_contents('structure.json');
 $sections = json_decode($str, true); //для конвертации из sdtClass в array при десериализации указать второй параметр true
 
