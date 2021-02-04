@@ -1,7 +1,7 @@
 <?php
 class Parser
 {
-    private DOMXPath $parser;
+    protected DOMXPath $parser;
 
     function __construct($url)
     {

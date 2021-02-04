@@ -11,21 +11,21 @@ class XMLGenerator
         $this->xml->formatOutput = true;
         $root = $this->xml->createElement('catalog');
         $this->xml->appendChild($root);
-        $categories = $this->xml->createElement('categories');
-        $root->appendChild($categories);
+        $this->categories = $this->xml->createElement('categories');
+        $root->appendChild($this->categories);
         $this->offers = $this->xml->createElement('offers');
         $root->appendChild($this->offers);
     }
-    public function add_category($name, $code, $parent_code = null)
+    public function add_category(array $section)
     {
-        $category = $this->xml->createElement('category', $name);
+        $category = $this->xml->createElement('category', $section['name']);
         $this->categories->appendChild($category);
         $category_code = $this->xml->createAttribute('id');
-        $category_code->value = $code;
+        $category_code->value = $section['code'];
         $category->appendChild($category_code);
-        if (isset($parent_code)) {
+        if (isset($section['parent_code'])) {
             $parent_category_code = $this->xml->createAttribute('parentId');
-            $parent_category_code->value = $parent_code;
+            $parent_category_code->value = $section['parent_code'];
             $category->appendChild($parent_category_code);
         }
     }
