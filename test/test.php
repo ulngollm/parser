@@ -14,6 +14,6 @@ $subsection = array(
 $query = '//div[@class="ty-product-list__item-name"]/bdi/a/@href';
 $url = 'https://daichi-aircon.ru/nastennye-split-sistemy-daichi/everest/?items_per_page=128';
 $parser = new SectionParser($url);
-$sections = $parser->get_parent_sections($sections);
+$sections = $parser->get_sections($subsection);
 // $elements = $parser->get_elements_list($query);
 print_r($sections);
