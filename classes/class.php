@@ -28,13 +28,13 @@ class Parser
 
 class SectionParser extends Parser
 {
-    public function get_parent_sections()
+    public function get_parent_sections(array $params)
     {
         $section_list = array();
-        $sections = $this->parser->query('//div[@id="dropdown_5106"]/ul/li[position()>1 and position() <10]/a[@href]');
+        $sections = $this->parser->query($params['section']);
         foreach ($sections as $section) {
-            $link = $this->parser->query('./@href', $section)->item(0)->nodeValue;
-            $name = trim($this->parser->query('./div/text()', $section)->item(0)->nodeValue);
+            $link = $this->parser->query($params['link'], $section)->item(0)->nodeValue;
+            $name = trim($this->parser->query($params['text'], $section)->item(0)->nodeValue);
             $code = md5($name);
             $section_item = array('name' => $name, 'code' => $code, 'link' => $link);
             array_push($section_list, $section_item);
@@ -42,17 +42,17 @@ class SectionParser extends Parser
         return $section_list; //массив с названиями разделов и ссылками
     }
 
-    public function get_subsections() //from section page
+    public function get_subsections($params) //from section page
     {
         //только для страницы раздела
         $section_list = array();
-        $sections = $this->parser->query('//li[@class="ty-subcategories__item"]');
-        $parent_name = trim($this->parser->query('//span[@class="ty-breadcrumbs__current"]/bdi/text()')->item(0)->nodeValue);
+        $sections = $this->parser->query($params['section']);
+        $parent_name = trim($this->parser->query($params['parent'])->item(0)->nodeValue);
         $parent_code = md5($parent_name);
         foreach ($sections as $section) {
             $name = $section;
-            $link = $this->parser->query('./a/@href', $section)->item(0)->nodeValue;
-            $name = trim($this->parser->query('./a/span/text()', $section)->item(0)->nodeValue);
+            $link = $this->parser->query($params['link'], $section)->item(0)->nodeValue;
+            $name = trim($this->parser->query($params['text'], $section)->item(0)->nodeValue);
             $code = md5($name);
             $section_item = array('name' => $name, 'code' => $code, 'parent_code' => $parent_code, 'link' => $link);
             array_push($section_list, $section_item);
@@ -60,10 +60,10 @@ class SectionParser extends Parser
         return $section_list;
     }
     //?items_per_page=128
-    public function get_elements_list()
+    public function get_elements_list($query)
     {
-        $elements = $this->parser->query('//div[@class="ty-product-list__item-name"]/bdi/a/@href');
-        if ($elements->length > 0) {
+        $elements = $this->parser->query($query);
+        if ($elements) {
             $elements_list = array();
             foreach ($elements as $element) {
                 $link = $element->nodeValue;
