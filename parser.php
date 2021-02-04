@@ -15,7 +15,14 @@ $subsection_params = array(
     'text' => './a/span/text()',
     'elements' => '//div[@class="ty-product-list__item-name"]/bdi/a/@href'
 );
-$detail_params = array();
+$detail_params = array(
+    'name' => '//h1[@class="ty-product-block-title"]/bdi/text()',
+    'images' => '//div[contains(@id, "product_images")]/div/div[@class="ty-product-img cm-preview-wrapper"]/a/@href',
+    'desc'=>'//div[@id="content_description"]/div',
+    'props'=>'//div[@id="content_features"]//div[@class="ty-product-feature"]',
+    'price'=>'//div[@class="ty-product-block__price-actual"]//span[@class="ty-price-num"][1]',
+    'article'=>'//div[@class="ty-product-block__sku"]/div/span',
+);
 
 $parser = new SectionParser($url, $section_params);
 $xml = new XMLGenerator();
@@ -58,8 +65,12 @@ print_r(count($section_list));
 // save_json(array_merge($root_sections, $section_list));//debug
 
 //пойти по всем товарам
-foreach($section_list['elements'] as $elem){
-    $offer = new Offer($elem, $parent, $params);
+foreach($section_list as $section){
+    $parent_code = $section['parent_code'];
+    foreach($section['elements'] as $elem){
+        $offer = new Offer($elem, $parent_code, $detail_params);
+        $xml->add_offer($offer);
+    }
 }
 
 $xml->xml->save('output/xml.xml');

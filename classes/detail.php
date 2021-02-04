@@ -5,7 +5,7 @@ class Offer extends Parser
     public string $name;
     public string $category_code;
     public string $article;
-    public string $brand;
+    // public string $brand;
     public string $description;
     public array $properties;
     public string $price;
@@ -26,7 +26,7 @@ class Offer extends Parser
         $this->set_properties();
         $this->set_images();
         $this->set_description();
-        $this->set_brand();
+        // $this->set_brand();
         $this->set_article();
     }
     public function set_name()
@@ -38,7 +38,7 @@ class Offer extends Parser
     {
         $images = $this->parser->query($this->xpath['images']);
         foreach ($images as $image) {
-            array_push($this->images, DOMAIN . $image->nodeValue);
+            array_push($this->images, $image->nodeValue);
         }
     }
     public function set_description()

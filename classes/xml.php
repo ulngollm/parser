@@ -31,32 +31,32 @@ class XMLGenerator
     }
     public function add_offer(Offer $offer)
     {
-        $offer = $this->xml->createElement('offer');
-        $name = $this->xml->createElement('name', $this->name);
-        $price = $this->xml->createElement('price', $this->price);
-        $code = $this->xml->createElement('code', $this->article);
-        $description = $this->xml->createElement('desc', $this->description);
-        $brand = $this->xml->createElement('brand', $this->brand);
+        $offer_elem = $this->xml->createElement('offer');
+        $name = $this->xml->createElement('name', $offer->name);
+        $price = $this->xml->createElement('price', $offer->price);
+        $code = $this->xml->createElement('code', $offer->article);
+        $description = $this->xml->createElement('desc', $offer->description);
+        // $brand = $this->xml->createElement('brand', $this->brand);
         $images = $this->xml->createElement('images');
         $properties = $this->xml->createElement('props');
-        $category = $this->xml->createElement('categoryId', $this->category_code);
+        $category = $this->xml->createElement('categoryId', $offer->category_code);
 
-        $this->offers->appendChild($offer);
-        $offer->appendChild($name);
-        $offer->appendChild($category);
-        $offer->appendChild($code);
-        $offer->appendChild($price);
-        $offer->appendChild($description);
-        $offer->appendChild($brand);
-        $offer->appendChild($images);
-        $offer->appendChild($properties);
+        $this->offers->appendChild($offer_elem);
+        $offer_elem->appendChild($name);
+        $offer_elem->appendChild($category);
+        $offer_elem->appendChild($code);
+        $offer_elem->appendChild($price);
+        $offer_elem->appendChild($description);
+        // $offer->appendChild($brand);
+        $offer_elem->appendChild($images);
+        $offer_elem->appendChild($properties);
 
         foreach ($offer->images as $image) {
             $img = $this->xml->createElement('image', $image);
             $images->appendChild($img);
         }
         foreach ($offer->properties as $property) {
-            $name = $property[0];
+            $name = trim($property[0],":");
             $value = $property[1];
             $code = md5($name);
             $prop = $this->xml->createElement('prop');
