@@ -1,6 +1,12 @@
 <?php
-include_once('./classes/class.php');
-include_once('./classes/xml.php');
+error_reporting(E_ALL);
+ini_set('error_log', __DIR__ . '/log/daichi.log');
+
+include_once(__DIR__ . "/classes/class.php");
+include_once(__DIR__ . '/classes/xml.php');
+include_once(__DIR__ . '/classes/detail.php');
+include_once(__DIR__ . '/dev/utils.php'); 
+
 
 $url = 'https://daichi-aircon.ru/';
 
@@ -18,18 +24,19 @@ $subsection_params = array(
 $detail_params = array(
     'name' => '//h1[@class="ty-product-block-title"]/bdi/text()',
     'images' => '//div[contains(@id, "product_images")]/div/div[@class="ty-product-img cm-preview-wrapper"]/a/@href',
-    'desc'=>'//div[@id="content_description"]/div',
-    'props'=>'//div[@id="content_features"]//div[@class="ty-product-feature"]',
-    'price'=>'//div[@class="ty-product-block__price-actual"]//span[@class="ty-price-num"][1]',
-    'article'=>'//div[@class="ty-product-block__sku"]/div/span',
+    'desc' => '//div[@id="content_description"]/div/p[text()]',
+    'props' => '//div[@id="content_features"]//div[@class="ty-product-feature"]',
+    'price' => '//div[@class="ty-product-block__price-actual"]//span[@class="ty-price-num"][1]',
+    'article' => '//div[@class="ty-product-block__sku"]/div/span',
 );
+log_parser_start('daichi'); //debug
 
 $parser = new SectionParser($url, $section_params);
 $xml = new XMLGenerator();
 
 //получаем список верхних разделов
 $root_sections = $parser->get_section_list();
-// print_r($root_sections);
+show_progress(); //debug
 unset($parser);
 
 $section_list = array();
@@ -40,43 +47,46 @@ foreach ($root_sections as &$section) {
     //смотрим, есть ли товары на этой странице
     $elements = $subparser->get_elements_list();
     if ($elements) $section['elements']  = $elements;
-    
+
     //проверяем, есть ли у раздела вложенные
     //если раздел отмечен в меню как текущий, значит, вложенных нет
-    $isCurrent = $subparser->query('//li[@class="ty-subcategories__current_item"]')->length; 
+    $isCurrent = $subparser->query('//li[@class="ty-subcategories__current_item"]')->length;
     if (!$isCurrent) {
         $subsections = $subparser->get_section_list();
         $section_list = array_merge($section_list, $subsections);
     }
+    show_progress(); //debug
 }
 
-//проходим по страницам вложенных разделов
-foreach($section_list as &$section){
+//получаем товары : проходим по страницам вложенных разделов 
+foreach ($section_list as &$section) {
     $xml->add_category($section);
     //если это не те верхние разделы, в которых были элементы, получаем ссылки товаров
-    if(!isset($section['elements'])){
+    if (!isset($section['elements'])) {
         $subparser = new SectionParser($section['link'], $subsection_params, $section['code']);
         $section['elements'] = $subparser->get_elements_list();
     }
+    show_progress();
 }
-$xml->xml->save('output/xml.xml');
+$xml->xml->save(__DIR__ . '/output/xml.xml');
+$sections = array_merge($root_sections, $section_list);
+save_json($sections);//debug
+// пойти по всем товарам
+$count = count($sections);
+foreach ($sections as $key=>$section) {
+    if (!isset($section['elements'])){
+        print($section['name']." doesn't have elements. $key from $count\n");
 
-print_r(count($section_list));
-// save_json(array_merge($root_sections, $section_list));//debug
-
-//пойти по всем товарам
-foreach($section_list as $section){
-    $parent_code = $section['parent_code'];
-    foreach($section['elements'] as $elem){
-        $offer = new Offer($elem, $parent_code, $detail_params);
-        $xml->add_offer($offer);
     }
+    // if (isset($section['elements'])) {
+    //     $parent_code = $section['code'];
+    //     foreach ($section['elements'] as $elem) {
+    //         $offer = new Offer($elem, $parent_code, $detail_params);
+    //         $xml->add_offer($offer);
+    //         show_progress(); //debug
+    //     }
+    //     $xml->xml->save(__DIR__ . '/output/xml.xml');
+    // }
 }
 
-$xml->xml->save('output/xml.xml');
-
-function save_json(array $arr)
-{
-    $data = json_encode($arr, JSON_UNESCAPED_UNICODE);
-    file_put_contents(__DIR__ . '/output/section.json', $data, FILE_APPEND);
-}
+log_parser_end();

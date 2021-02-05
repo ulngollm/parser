@@ -32,7 +32,7 @@ class Offer extends Parser
     public function set_name()
     {
         $name = $this->parser->query($this->xpath['name'])->item(0);
-        $this->name = ($name)? $name->textContent : "";
+        $this->name = ($name) ? $name->textContent : "";
     }
     public function set_images()
     {
@@ -43,8 +43,12 @@ class Offer extends Parser
     }
     public function set_description()
     {
-        $description = $this->parser->query($this->xpath['desc'])->item(0);
-        $this->description = ($description) ? trim($description->nodeValue) : "";
+        $description = $this->parser->query($this->xpath['desc']);
+        $description_text = "";
+        foreach ($description as $line) {
+            $description_text .= "$line->nodeValue\n";
+        }
+        $this->description =$description_text;
     }
     public function set_properties()
     {
@@ -66,11 +70,11 @@ class Offer extends Parser
     public function set_article()
     {
         $article = $this->parser->query($this->xpath['article'])->item(0);
-        $this->article = ($article)? trim($article->nodeValue):"";
+        $this->article = ($article) ? trim($article->nodeValue) : "";
     }
     public function set_brand()
     {
         $brand = $this->parser->query($this->xpath['brand'])->item(0);
-        $this->brand = ($brand)? trim($brand->nodeValue):"";
+        $this->brand = ($brand) ? trim($brand->nodeValue) : "";
     }
 }
