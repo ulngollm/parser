@@ -9,26 +9,26 @@
     <category id="6e151c732b02246097e3ce4f98d36c17">Тепловые насосы</category>
     <category id="7d68f9657bdc57254ca4e9d01a87e838">Кондиционеры технологического охлаждения</category>
     <category id="753844501bff0fe6a3fd01e358507d19">Системы управления</category>
-    <category id="39d88c0d43bf7c538bb1cc62d96c8e8c" parentId="e612ba08f686ec33be92d9abaceb110c">Everest</category>
-    <category id="a21e600ebbe2eab6697e3087ee1fdb9f" parentId="e612ba08f686ec33be92d9abaceb110c">Peak</category>
-    <category id="805b5cb5b6bd0414a64f06491091ca03" parentId="e612ba08f686ec33be92d9abaceb110c">X-Treme Peak</category>
-    <category id="fbebe083c5b1b5e088996c28fb19f9e4" parentId="e612ba08f686ec33be92d9abaceb110c">Carbon</category>
-    <category id="acacf923b458131caf6d6f5914438c6e" parentId="e612ba08f686ec33be92d9abaceb110c">Технологического охлаждения DFT</category>
-    <category id="d428b351f251674d3bed0dde4c1c25c4" parentId="5a3c29862e79a3e717bceed77b5639c5">Средненапорные DA_ALM</category>
-    <category id="b8324af74bf49f7879eecaca9d7f80f4" parentId="5a3c29862e79a3e717bceed77b5639c5">Высоконапорные DA_ALH</category>
-    <category id="acacf923b458131caf6d6f5914438c6e" parentId="5a3c29862e79a3e717bceed77b5639c5">Технологического охлаждения DFT</category>
-    <category id="1b9cd872502a70371c576509cfc9599b" parentId="26861a29e18a5235e5092046f4c6d1ea">Компактные инверторные DA_ALF</category>
-    <category id="9f95bc70c55a667ccaba4e8d4a2c56bf" parentId="26861a29e18a5235e5092046f4c6d1ea">Стандартные инверторные DA_ALC</category>
-    <category id="acacf923b458131caf6d6f5914438c6e" parentId="26861a29e18a5235e5092046f4c6d1ea">Технологического охлаждения DFT</category>
-    <category id="33a0058f27f2c12ee4f40dce9b782100" parentId="6155e8c838bd5887e50c6488301cf6a8">Инверторные DA_ALK/DF_ALS</category>
-    <category id="acacf923b458131caf6d6f5914438c6e" parentId="6155e8c838bd5887e50c6488301cf6a8">Технологического охлаждения DFT</category>
-    <category id="e084a9f0377256a5140d2b864182fdf6" parentId="3d1916c7b046496afbc118b2f9c3f8e4">Внутренние блоки</category>
-    <category id="368fab590016c18cffb9c85d8a6806da" parentId="3d1916c7b046496afbc118b2f9c3f8e4">Наружные блоки</category>
-    <category id="d7dab2445990fd681af9791c9028285b" parentId="3d1916c7b046496afbc118b2f9c3f8e4">Комплекты</category>
-    <category id="029f96b9286554a75f7b581206befe50" parentId="7d68f9657bdc57254ca4e9d01a87e838">Настенные</category>
-    <category id="4c65d4834c07893e3c3b93da9181c9ab" parentId="7d68f9657bdc57254ca4e9d01a87e838">Канальные</category>
-    <category id="f887de619961435d254026de5bbe9288" parentId="7d68f9657bdc57254ca4e9d01a87e838">Кассетные</category>
-    <category id="bb0d0350b90fa120c14bbc59bee33ff0" parentId="7d68f9657bdc57254ca4e9d01a87e838">Напольно-потолочные</category>
+    <category id="5095deef73da6e7175b9950763cda00f" parentId="e612ba08f686ec33be92d9abaceb110c">Everest</category>
+    <category id="658c8ffd6b7a2bf304005ad53f8409c2" parentId="e612ba08f686ec33be92d9abaceb110c">Peak</category>
+    <category id="718a74ab3cb0294729d56e3f1e375dc7" parentId="e612ba08f686ec33be92d9abaceb110c">X-Treme Peak</category>
+    <category id="61ffd6dc890cb8c0b9c9febae0afc257" parentId="e612ba08f686ec33be92d9abaceb110c">Carbon</category>
+    <category id="25ac089b80aa60debc86846f7eb9634b" parentId="e612ba08f686ec33be92d9abaceb110c">Технологического охлаждения DFT</category>
+    <category id="5cf5dcf2b6b184bb668a08874db4a22a" parentId="5a3c29862e79a3e717bceed77b5639c5">Средненапорные DA_ALM</category>
+    <category id="dbcaa68baf1475f3f4a263e765ecc4e3" parentId="5a3c29862e79a3e717bceed77b5639c5">Высоконапорные DA_ALH</category>
+    <category id="8c59b630e5c24ff20a973d7bea9d114f" parentId="5a3c29862e79a3e717bceed77b5639c5">Технологического охлаждения DFT</category>
+    <category id="741ea80e9224a8fa32a44ecc4dea8127" parentId="26861a29e18a5235e5092046f4c6d1ea">Компактные инверторные DA_ALF</category>
+    <category id="66622d53a2b9ea035914054527b2bfed" parentId="26861a29e18a5235e5092046f4c6d1ea">Стандартные инверторные DA_ALC</category>
+    <category id="8c85c392b659c0fdf90a7ae046f548b7" parentId="26861a29e18a5235e5092046f4c6d1ea">Технологического охлаждения DFT</category>
+    <category id="127f99e66babbb9d6574567f0cd536da" parentId="6155e8c838bd5887e50c6488301cf6a8">Инверторные DA_ALK/DF_ALS</category>
+    <category id="07556759b4a8ba842c94bd4f74a5c2db" parentId="6155e8c838bd5887e50c6488301cf6a8">Технологического охлаждения DFT</category>
+    <category id="5c82f62ba380a9699cd660923dcfa574" parentId="3d1916c7b046496afbc118b2f9c3f8e4">Внутренние блоки</category>
+    <category id="6c04022ad4285dde451e9a75a29c8d73" parentId="3d1916c7b046496afbc118b2f9c3f8e4">Наружные блоки</category>
+    <category id="d0c155f905dbf55d61cd03e336444ec0" parentId="3d1916c7b046496afbc118b2f9c3f8e4">Комплекты</category>
+    <category id="f7954bf8921962938c0a7d34c7fca671" parentId="7d68f9657bdc57254ca4e9d01a87e838">Настенные</category>
+    <category id="948c351a94c954c744e9d281aed76f94" parentId="7d68f9657bdc57254ca4e9d01a87e838">Канальные</category>
+    <category id="4db9c99af914d20a1e6dcf1378cc5e2f" parentId="7d68f9657bdc57254ca4e9d01a87e838">Кассетные</category>
+    <category id="e6bb2e9e9802122a96b40f8578392340" parentId="7d68f9657bdc57254ca4e9d01a87e838">Напольно-потолочные</category>
   </categories>
   <offers/>
 </catalog>

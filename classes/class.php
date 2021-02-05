@@ -53,7 +53,7 @@ class SectionParser extends Parser
         foreach ($sections as $section) {
             $link = $this->parser->query($this->link_xpath, $section)->item(0)->nodeValue;
             $name = trim($this->parser->query($this->text_xpath, $section)->item(0)->nodeValue);
-            $code = md5($name);
+            $code = md5($name.$this->parent_code);
             $section_item = array(
                 'name' => $name,
                 'code' => $code,
