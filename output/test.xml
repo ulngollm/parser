@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog>
+  <categories>
+    <category id="7d68f9657bdc57254ca4e9d01a87e838">Кондиционеры технологического охлаждения</category>
+    <category id="e6bb2e9e9802122a96b40f8578392340" parentId="7d68f9657bdc57254ca4e9d01a87e838">Напольно-потолочные</category>
+  </categories>
+  <offers>
+    <offer>
+      <name>Daichi DAT100ALKS1/ DFT100ALS1/-40</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37441DC</code>
+      <price>191 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/100_4lgl-3x.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_8js6-0v.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF100ALS1R_nh08-q9.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_lv0e-8s.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>110</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>11</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>2,93</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-40+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>43/45/47</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>54</value>
+        </prop>
+        <prop id="3297908bbe70ba3c5be798dd40ffaa7c">
+          <name>Зимний комплект</name>
+          <value>есть</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>60</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1200х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>302х973х862</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>32</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>58</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT140ALKS1/ DFT140ALS1/-40</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37443DC</code>
+      <price>289 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/100_ftdh-39.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_k7qt-kt.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF100ALS1R_2a2o-ee.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_0gzb-eu.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>140</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>14.5</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>3,75</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-40+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>44/48/50</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>55</value>
+        </prop>
+        <prop id="3297908bbe70ba3c5be798dd40ffaa7c">
+          <name>Зимний комплект</name>
+          <value>есть</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>70</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1570х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>523х1053х865</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>40</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>85</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT160ALKS1/ DFT160ALS1/-40</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37445DC</code>
+      <price>317 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/100_toyp-zy.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_5hww-lo.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF100ALS1R_y4lg-ab.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_ilxn-3f.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>170</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>17</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>4,29</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-40+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>45/49/53</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>55</value>
+        </prop>
+        <prop id="3297908bbe70ba3c5be798dd40ffaa7c">
+          <name>Зимний комплект</name>
+          <value>есть</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>70</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1570х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>523х1053х865</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>42</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>85</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT70ALKS1/ DFT70ALS1</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37438DC</code>
+      <price>153 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/37438_1.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/37438_2.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/37438_4.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/37438_3.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>70</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>7.2</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>1.77</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-5+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>38/41/44</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>60</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1200х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>302х973х862</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>40</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>58</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT100ALKS1/ DFT100ALS1</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37440DC</code>
+      <price>184 999</price>
+      <desc>&#13;
+
+Большой информационный дисплей на внутреннем блоке&#13;
+
+Встроенный в корпус электронно-расширительный клапан&#13;
+
+Высокоэффективный фильтр для поддержания высокого качества воздуха&#13;
+
+Несколько скоростей вращения вентилятора&#13;
+
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения&#13;
+
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК&#13;
+
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/100_hvzi-o1.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_cett-gr.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF100ALS1R_wawp-vt.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_vvu4-qw.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>110</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>11</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>2,93</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-5+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>43/45/47</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>54</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>60</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1200х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>302х973х862</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>32</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>58</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT140ALKS1/ DFT140ALS1</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37442DC</code>
+      <price>282 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/100_irr3-nn.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_pni7-jl.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF100ALS1R_pf7z-ot.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_sl8u-sb.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>140</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>14.5</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>3,75</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-5+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>44/48/50</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>55</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>70</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1570х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>523х1053х865</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>40</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>85</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT160ALKS1/ DFT160ALS1</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37444DC</code>
+      <price>310 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/100_n8y1-76.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_lfb4-52.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF100ALS1R_0bug-zd.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_4g2j-ef.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>170</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>17</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>4,29</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-5+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>45/49/53</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>55</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>70</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1570х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>523х1053х865</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>42</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>85</value>
+        </prop>
+      </props>
+    </offer>
+    <offer>
+      <name>Daichi DAT70ALKS1/ DFT70ALS1/-40</name>
+      <categoryId>e6bb2e9e9802122a96b40f8578392340</categoryId>
+      <code>37439DC</code>
+      <price>160 999</price>
+      <desc>Большой информационный дисплей на внутреннем блоке
+Встроенный в корпус электронно-расширительный клапан
+Высокоэффективный фильтр для поддержания высокого качества воздуха
+Несколько скоростей вращения вентилятора
+Автоматическое качание горизонтальных заслонок и вертикальных жалюзи для равномерного охлаждения
+Возможность удаленного управления через интернет или локальную сеть через «облако Даичи» со смартфона, ПК
+      </desc>
+      <images>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/70_amu6-vg.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DA100ALKS1R_tyx2-tn.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DF50ALS1R_6wdj-p5.jpg</image>
+        <image>https://daichi-aircon.ru/images/thumbnails/800/700/detailed/17/DRC01_z3yf-ga.jpg</image>
+      </images>
+      <props>
+        <prop id="b92ac7b2d9ef20a438293819979c21b0">
+          <name>Режим работы</name>
+          <value>только холод</value>
+        </prop>
+        <prop id="400fc823384f900ba64072812488bacf">
+          <name>Хладагент</name>
+          <value>R410A</value>
+        </prop>
+        <prop id="d7ae7e9c28ff8aa13fa87c6284fb3bed">
+          <name>Инвертор</name>
+          <value>есть</value>
+        </prop>
+        <prop id="10ebe51da9123a85a8944dac9936817a">
+          <name>Площадь, м²</name>
+          <value>70</value>
+        </prop>
+        <prop id="55a15484ac733a6b7148ec2f3b824293">
+          <name>Электропитание, В</name>
+          <value>220</value>
+        </prop>
+        <prop id="ca899e3a60934ac0382aaf6e611a28eb">
+          <name>Мощность охлаждения, кВт</name>
+          <value>7.2</value>
+        </prop>
+        <prop id="4ef6949dcd0ac4450b133d04c6caabe0">
+          <name>Потребляемая мощность (охлаждение), кВт</name>
+          <value>1,77</value>
+        </prop>
+        <prop id="37e186e517e88fb5c4b70f14ebeed099">
+          <name>Класс сезонной энергоэффективности, охл.</name>
+          <value>A</value>
+        </prop>
+        <prop id="a0042d707fa098de4298ac99fee1102e">
+          <name>Диапазон рабочих температур (охл), С</name>
+          <value>-40+48</value>
+        </prop>
+        <prop id="bb8322aa3011aca350c27df1280fce60">
+          <name>Уровень шума (ВБ), Дб</name>
+          <value>38/41/44</value>
+        </prop>
+        <prop id="812e70bcec5c17337d6140079f7c82d3">
+          <name>Уровень шума (НБ), Дб</name>
+          <value>54</value>
+        </prop>
+        <prop id="f9279f55880875b054d97dcf877a43f5">
+          <name>Трубопровод со стороны жидкости, мм</name>
+          <value>9,52</value>
+        </prop>
+        <prop id="04574ab12c1b82d6f2c21537f2e346f3">
+          <name>Трубопровод со стороны газа, мм</name>
+          <value>15,9</value>
+        </prop>
+        <prop id="d5218aefabb7c2a831a61ac84f187b69">
+          <name>Максимальная длина трассы, м</name>
+          <value>60</value>
+        </prop>
+        <prop id="15493e4e38554ac59d6606b095e209bf">
+          <name>Максимальный перепад высот, м</name>
+          <value>30</value>
+        </prop>
+        <prop id="b23f54efaa956c3684b31603ecf617f8">
+          <name>Габариты внутреннего блока (ШхГхВ), мм</name>
+          <value>1200х235х665</value>
+        </prop>
+        <prop id="9a85032e68e1c8874b91987b549a5d53">
+          <name>Габариты наружного блока (ШхГхВ), мм</name>
+          <value>302х973х862</value>
+        </prop>
+        <prop id="939c50c80e9a873a1f472527b2ea7b01">
+          <name>Вес внутреннего блока, кг</name>
+          <value>40</value>
+        </prop>
+        <prop id="38dcf8e347f4fef676b7714b9bdd3cca">
+          <name>Вес наружного блока, кг</name>
+          <value>58</value>
+        </prop>
+      </props>
+    </offer>
+  </offers>
+</catalog>
