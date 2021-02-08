@@ -35,19 +35,29 @@ class XMLGenerator
         $name = $this->xml->createElement('name', $offer->name);
         $price = $this->xml->createElement('price', $offer->price);
         $code = $this->xml->createElement('code', $offer->article);
-        $description = $this->xml->createElement('desc', $offer->description);
-        // $brand = $this->xml->createElement('brand', $this->brand);
+        if ($offer->description) {
+            $description = $this->xml->createElement('desc');
+            $description_html = $this->xml->createCDATASection($offer->description);
+            $offer_elem->appendChild($description);
+            $description->appendChild($description_html);
+        }
+        if ($offer->preview_desc) {
+            $preview = $this->xml->createElement('preview_text');
+            $preview_html = $this->xml->createCDATASection($offer->preview_desc);
+            $offer_elem->appendChild($preview);
+            $preview->appendChild($preview_html);
+        }
+        $brand = $this->xml->createElement('brand', $offer->brand);
         $images = $this->xml->createElement('images');
         $properties = $this->xml->createElement('props');
-        $category = $this->xml->createElement('categoryId', $offer->category_code);
+        $category = $this->xml->createElement('category', $offer->category_code ? $offer->category_code : $offer->section_path);
 
         $this->offers->appendChild($offer_elem);
         $offer_elem->appendChild($name);
         $offer_elem->appendChild($category);
         $offer_elem->appendChild($code);
         $offer_elem->appendChild($price);
-        $offer_elem->appendChild($description);
-        // $offer->appendChild($brand);
+        if (isset($offer->brand))   $offer_elem->appendChild($brand);
         $offer_elem->appendChild($images);
         $offer_elem->appendChild($properties);
 
@@ -56,7 +66,7 @@ class XMLGenerator
             $images->appendChild($img);
         }
         foreach ($offer->properties as $property) {
-            $name = trim($property[0],":");
+            $name = trim($property[0], ":");
             $value = $property[1];
             $code = md5($name);
             $prop = $this->xml->createElement('prop');
@@ -69,6 +79,5 @@ class XMLGenerator
             $prop->appendChild($propValue);
             $properties->appendChild($prop);
         }
-        
     }
 }

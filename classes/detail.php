@@ -5,34 +5,39 @@ class Offer extends Parser
     public string $name;
     public string $category_code;
     public string $article;
-    // public string $brand;
+    public string $brand;
     public string $description;
-    public array $properties;
+    public string $preview_desc;
+    public string $section_path;
     public string $price;
+    public array $properties;
     public array $images;
     public DOMDocument $xml;
     private array $xpath;
 
-    public function __construct(string $url, string $category_code, array $xpath_params)
+    public function __construct(string $url, array $xpath_params, string $category_code = "")
     {
         parent::__construct($url);
         $this->xpath = $xpath_params;
         $this->category_code = $category_code;
         $this->images = array();
         $this->properties = array();
+        $this->section_path = "";
+        $this->description = "";
+        $this->preview_desc = "";
 
         $this->set_name();
         $this->set_price();
         $this->set_properties();
         $this->set_images();
         $this->set_description();
-        // $this->set_brand();
+        $this->set_brand();
         $this->set_article();
     }
     public function set_name()
     {
         $name = $this->parser->query($this->xpath['name'])->item(0);
-        $this->name = ($name) ? $name->textContent : "";
+        $this->name = ($name) ? htmlspecialchars($name->textContent) : "";
     }
     public function set_images()
     {
@@ -41,15 +46,27 @@ class Offer extends Parser
             array_push($this->images, $image->nodeValue);
         }
     }
+    public function set_section_path()
+    {
+        $sections = $this->query($this->xpath['section_path']);
+        foreach ($sections as $key => $section) {
+            $this->section_path .= $key? "/" : "";
+            $this->section_path .= $section->nodeValue;
+        }
+        $this->section_path = trim($this->section_path);
+    }
     public function set_description()
     {
-        $description = $this->parser->query($this->xpath['desc']);
-        $description_text = "";
-        foreach ($description as $line) {
-            $description_text .= "$line->nodeValue\n";
+        $description = $this->parser->query($this->xpath['desc'])->item(0);
+        if ($description) {
+            $description->removeChild($description->childNodes[0]);
+            $nodes = $description->childNodes;
+            foreach ($nodes as $child) {
+                $this->description .= $child->C14N();
+            }
         }
-        $this->description =$description_text;
     }
+
     public function set_properties()
     {
         $properties =  $this->parser->query($this->xpath['props']);
@@ -57,10 +74,15 @@ class Offer extends Parser
             $property = array();
             foreach ($prop->childNodes as $child) {
                 if ($child->nodeType == "1")
-                    array_push($property, trim($child->nodeValue));
+                    array_push($property, htmlspecialchars(trim($child->nodeValue)));
             }
             array_push($this->properties, $property);
         }
+    }
+    public function set_preview()
+    {
+        $preview = $this->parser->query($this->xpath['preview'])->item(0);
+        if ($preview) $this->preview_desc = $preview->C14N();
     }
     public function set_price()
     {
@@ -74,7 +96,9 @@ class Offer extends Parser
     }
     public function set_brand()
     {
-        $brand = $this->parser->query($this->xpath['brand'])->item(0);
-        $this->brand = ($brand) ? trim($brand->nodeValue) : "";
+        if (isset($this->xpath['brand'])) {
+            $brand = $this->parser->query($this->xpath['brand'])->item(0);
+            $this->brand = ($brand) ? trim($brand->nodeValue) : "";
+        }
     }
 }

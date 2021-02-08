@@ -1,12 +1,12 @@
 <?php
-function save_json(array $arr)
+function save_json(array $arr, string $filename)
 {
     $data = json_encode($arr, JSON_UNESCAPED_UNICODE);
-    file_put_contents(__DIR__ . '/../output/section.json', $data, FILE_APPEND);
+    file_put_contents(__DIR__ . "/../output/$filename", $data);
 }
-function show_progress()
+function show_progress(string $symbol = "-")
 {
-    echo "-";
+    echo $symbol;
 }
 function log_parser_start(string $sitename = 'daichi')
 {
