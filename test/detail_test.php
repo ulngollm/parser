@@ -5,21 +5,28 @@ include_once('./classes/class.php');
 include_once('./classes/detail.php');
 
 $params = array(
-    'name' => '//h1[@class="ty-product-block-title"]/bdi/text()',
-    'images' => '//div[contains(@id, "product_images")]/div/div[@class="ty-product-img cm-preview-wrapper"]/a/@href',
-    'desc'=>'//div[@id="content_description"]/div/p[text()]',
-    'props'=>'//div[@id="content_features"]//div[@class="ty-product-feature"]',
-    'price'=>'//div[@class="ty-product-block__price-actual"]//span[@class="ty-price-num"][1]',
-    'article'=>'//div[@class="ty-product-block__sku"]/div/span',
+    'name' => '//h1',
+    'section_path'=>'//nav[@class="woocommerce-breadcrumb"]/a[position()>1]',
+    'images' => '//div[contains(@class,"product-images")]//div[contains(@class, "slider-for")]//img[@class="lazyload"]/@src',
+    'preview' => '//div[@class="short-description"]/div[@class="woocommerce-product-details__short-description"]/node()',
+    'desc' => '//div[@id="tab-description"]/div[@class="tab-content"]',
+    'props' => '//table[contains(@class,"shop_attributes")]/tbody/tr',
+    'price' =>  '//div[@class="head-product"]//p[@class="price"]/span[contains(@class,"woocommerce-Price-amount")]/bdi/text()',
+    'article' => '//div[contains(@class,"articul_text")]//span[@class="sku"]',
+    'brand' => '//table[contains(@class, "shop_attributes")]//tr[contains(@class,"woocommerce-product-attributes-item--attribute_pa_brand")]/td[@class="woocommerce-product-attributes-item__value"]//text()'
 );
 
-$parent_code = 'gjvjgchadasco';
+$url = "https://pipl24.ru/product/ip-videodomofon-bas-ip-at-07l-silver/";
+$offer = new Offer($url, $params);
 
-$url = "https://daichi-aircon.ru/nastennye-split-sistemy-daichi/daichi-da25evq1-df25ev1/";
-$offer = new Offer($url, $parent_code, $params);
+print_r($offer);
+$offer->set_section_path();
+$offer->set_preview();
+print_r($offer->section_path);
 print_r($offer->description);
 
-// $xml = new XMLGenerator();
-// $xml->add_offer($offer);
-// $xml->xml->save('./output/one.xml');
+
+$xml = new XMLGenerator();
+$xml->add_offer($offer);
+$xml->xml->save('./output/onepipl.xml');
 
