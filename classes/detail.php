@@ -59,7 +59,7 @@ class Offer extends Parser
     {
         $description = $this->parser->query($this->xpath['desc'])->item(0);
         if ($description) {
-            $description->removeChild($description->childNodes[0]);
+            // $description->removeChild($description->childNodes[0]);
             $nodes = $description->childNodes;
             foreach ($nodes as $child) {
                 $this->description .= $child->C14N();

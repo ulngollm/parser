@@ -142,3 +142,63 @@ Stack trace:
 2021-02-08 20:24:24 Парсинг товаров выполнен успешно
 2021-02-08 21:01:29 Для скрипта запрошено 2048Кб памяти.
 2021-02-08 21:02:46 Парсинг товаров выполнен успешно
+2021-02-09 12:46:01 Для скрипта запрошено 2048Кб памяти.
+2021-02-09 12:47:41 Для скрипта запрошено 2048Кб памяти.
+[09-Feb-2021 12:47:41 Europe/Moscow] PHP Notice:  Undefined variable: url in /mnt/c/Users/noknok/Documents/parser/catalog_parser/parsers/pipe.ru.php on line 37
+[09-Feb-2021 12:47:41 Europe/Moscow] PHP Notice:  Undefined variable: section_params in /mnt/c/Users/noknok/Documents/parser/catalog_parser/parsers/pipe.ru.php on line 37
+[09-Feb-2021 12:47:41 Europe/Moscow] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to SectionParser::__construct() must be of the type string, null given, called in /mnt/c/Users/noknok/Documents/parser/catalog_parser/parsers/pipe.ru.php on line 37 and defined in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/class.php:37
+Stack trace:
+#0 /mnt/c/Users/noknok/Documents/parser/catalog_parser/parsers/pipe.ru.php(37): SectionParser->__construct()
+#1 {main}
+  thrown in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/class.php on line 37
+2021-02-09 12:47:54 Для скрипта запрошено 2048Кб памяти.
+[09-Feb-2021 12:51:08 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:08 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:08 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:08 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:08 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:08 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:09 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:09 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:09 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:09 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:09 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:51:09 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:12 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:53 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:58:54 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:59:36 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 12:59:37 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+[09-Feb-2021 13:00:00 Europe/Moscow] PHP Notice:  Undefined offset: 1 in /mnt/c/Users/noknok/Documents/parser/catalog_parser/classes/xml.php on line 70
+2021-02-09 13:11:26 Парсинг товаров выполнен успешно
+2021-02-09 13:31:11 Для скрипта запрошено 2048Кб памяти.
+2021-02-09 13:31:42 Парсинг товаров выполнен успешно

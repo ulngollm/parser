@@ -81,7 +81,7 @@ foreach ($sections as $key=>$section) {
     if (isset($section['elements'])) {
         $parent_code = $section['code'];
         foreach ($section['elements'] as $elem) {
-            $offer = new Offer($elem, $parent_code, $detail_params);
+            $offer = new Offer($elem, $detail_params,$parent_code);
             $xml->add_offer($offer);
             show_progress(); //debug
         }

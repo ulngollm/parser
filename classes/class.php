@@ -19,7 +19,7 @@ class Parser
         curl_close($id);
         return $page;
     }
-    public function query(string $query, $contextNode = null)
+    public function query(string $query, DOMNode $contextNode = null)
     {
         return $this->parser->query($query, $contextNode);
     }
@@ -28,46 +28,48 @@ class Parser
 
 class SectionParser extends Parser
 {
-    public string $section_xpath;
-    public string $link_xpath;
-    public string $text_xpath;
-    public string $elements_xpath;
+    public array $xpath;
     public $parent_code;
+    public array $sections;
 
     public function __construct(string $url, array $params, string $parent_code = null)
     {
-        parent::__construct("$url?items_per_page=128");
+        parent::__construct($url);
         $this->parent_code = $parent_code;
-        $this->elements_xpath = "";
-
-        foreach($params as $key=>$value){
-            $prop = "{$key}_xpath";
-            $this->$prop = $value;
-        }
+        $this->xpath = $params;
     }
 
-    public function get_section_list()
+    public function get_section_list(array $params = null, array $parent_section = null)
     {
+        if (!$params) $params = $this->xpath;
+
+        $parent_node = $parent_section ? $parent_section['node'] : null;
+        $parent_code = $parent_section ? $parent_section['code'] : "";
+
+
         $section_list = array();
-        $sections = $this->parser->query($this->section_xpath);
+        $sections = $this->parser->query($params['path'], $parent_node);
         foreach ($sections as $section) {
-            $link = $this->parser->query($this->link_xpath, $section)->item(0)->nodeValue;
-            $name = trim($this->parser->query($this->text_xpath, $section)->item(0)->nodeValue);
-            $code = md5($name.$this->parent_code);
+            $link = $this->parser->query($params['link'], $section)->item(0)->nodeValue;
+            $name = trim($this->parser->query($params['name'], $section)->item(0)->nodeValue);
+            $code = md5($name . $this->parent_code);
             $section_item = array(
+                'node' => $section,
                 'name' => $name,
                 'code' => $code,
                 'link' => $link,
-                'parent_code' => $this->parent_code
+                'parent_code' => $parent_code
             );
             array_push($section_list, $section_item);
         }
         return $section_list;
     }
 
-    public function get_elements_list()
+    public function get_elements_list(string $elements_xpath = null)
     {
-        $elements = $this->parser->query($this->elements_xpath);
+        if (!$elements_xpath) $elements_xpath = $this->xpath['elements'];
+
+        $elements = $this->parser->query($elements_xpath);
         if ($elements) {
             $elements_list = array();
             foreach ($elements as $element) {
@@ -75,7 +77,6 @@ class SectionParser extends Parser
                 array_push($elements_list, $link);
             }
             return $elements_list;
-        }
-        else return false;
+        } else return null;
     }
 }
