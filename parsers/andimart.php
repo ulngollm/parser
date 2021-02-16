@@ -47,27 +47,44 @@ foreach ($root_sections as $root_section) {
     foreach ($sections as $section) {
         $subsections = $parser->get_section_list($subsection_params, $section);
         foreach ($subsections as &$subsection) {
-            $subsection['elements'] = $parser->get_elements_list($subsection_params['elements']);
+            $elements = array();
+            $subparser = new SectionParser($url . $subsection['link'], $subsection_params);
+            $elements = $subparser->get_elements_list();
+
+            $elem_count = $subparser->query($subparser->xpath['elements'])->length;
+            $total_elem_count = intval($subparser->query('//div[@class="catalog-ctrls__in"]//span[@class="count__val"]')->item(0)->nodeValue);
+            if ($total_elem_count > $elem_count) {
+                unset($subparser);
+                $pages_count = ceil($total_elem_count / $elem_count);
+                for ($i = 2; $i <= $pages_count; $i++) {
+                    $page_parser = new SectionParser($url . $subsection['link'], $subsection_params);
+                    $page_elements = $page_parser->get_elements_list();
+                    $elements = array_merge($elements, $page_elements);
+                }
+            }
+
+            $subsection['elements'] = $elements;
         }
         $all_sections = array_merge($all_sections, $subsections);
     }
+
     print_r(count($subsections));
 }
 
 save_json($all_sections, 'sectins_andi.json'); //debug
 
-foreach ($all_sections as $section) {
-    $xml->add_category($section);
-    show_progress($section['name']);
-    $parent_code = $section['code'];
-    if (isset($section['elements'])) {
-        foreach ($section['elements'] as $link_element) {
-            $link_element = $url . $link_element;
-            $offer = new Offer($link_element, $detail_params, $parent_code);
-            $xml->add_offer($offer);
-            show_progress(); //debug
-            $xml->xml->save(__DIR__ . '/../output/andimart.xml');
-        }
-    }
-}
-log_parser_end('andimart');
+// foreach ($all_sections as $section) {
+//     $xml->add_category($section);
+//     show_progress($section['name']);
+//     $parent_code = $section['code'];
+//     if (isset($section['elements'])) {
+//         foreach ($section['elements'] as $link_element) {
+//             $link_element = $url . $link_element;
+//             $offer = new Offer($link_element, $detail_params, $parent_code);
+//             $xml->add_offer($offer);
+//             show_progress(); //debug
+//             $xml->xml->save(__DIR__ . '/../output/andimart.xml');
+//         }
+//     }
+// }
+// log_parser_end('andimart');
