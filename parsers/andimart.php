@@ -73,18 +73,18 @@ foreach ($root_sections as $root_section) {
 
 save_json($all_sections, 'sectins_andi.json'); //debug
 
-// foreach ($all_sections as $section) {
-//     $xml->add_category($section);
-//     show_progress($section['name']);
-//     $parent_code = $section['code'];
-//     if (isset($section['elements'])) {
-//         foreach ($section['elements'] as $link_element) {
-//             $link_element = $url . $link_element;
-//             $offer = new Offer($link_element, $detail_params, $parent_code);
-//             $xml->add_offer($offer);
-//             show_progress(); //debug
-//             $xml->xml->save(__DIR__ . '/../output/andimart.xml');
-//         }
-//     }
-// }
-// log_parser_end('andimart');
+foreach ($all_sections as $section) {
+    $xml->add_category($section);
+    show_progress($section['name']);
+    $parent_code = $section['code'];
+    if (isset($section['elements'])) {
+        foreach ($section['elements'] as $link_element) {
+            $link_element = $url . $link_element;
+            $offer = new Offer($link_element, $detail_params, $parent_code);
+            $xml->add_offer($offer);
+            show_progress(); //debug
+            $xml->xml->save(__DIR__ . '/../output/andimart.xml');
+        }
+    }
+}
+log_parser_end('andimart');
