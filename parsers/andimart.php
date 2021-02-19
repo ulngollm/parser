@@ -34,45 +34,49 @@ $detail_params = array(
 );
 $url = 'https://andimart.ru';
 
-$parser = new SectionParser($url, $root_section_params);
+// $parser = new SectionParser($url, $root_section_params);
 $xml = new XMLGenerator();
 log_parser_start('andimart'); //debug
 
-$root_sections = $parser->get_section_list();
-$all_sections = $root_sections;
+// $root_sections = $parser->get_section_list();
+// $all_sections = $root_sections;
 
-foreach ($root_sections as $root_section) {
-    $sections = $parser->get_section_list($section_params, $root_section);
-    $all_sections = array_merge($all_sections, $sections);
-    foreach ($sections as $section) {
-        $subsections = $parser->get_section_list($subsection_params, $section);
-        foreach ($subsections as &$subsection) {
-            $elements = array();
-            $subparser = new SectionParser($url . $subsection['link'], $subsection_params);
-            $elements = $subparser->get_elements_list();
+// foreach ($root_sections as $root_section) {
+//     $sections = $parser->get_section_list($section_params, $root_section);
+//     $all_sections = array_merge($all_sections, $sections);
+//     show_progress($root_section['name'] . " ");
+//     foreach ($sections as $section) {
+//         show_progress($section['name'] . "\n");
+//         $subsections = $parser->get_section_list($subsection_params, $section);
+//         foreach ($subsections as &$subsection) {
+//             $elements = array();
+//             $subparser = new SectionParser($url . $subsection['link'], $subsection_params);
+//             $elements = $subparser->get_elements_list();
 
-            $elem_count = $subparser->query($subparser->xpath['elements'])->length;
-            $total_elem_count = intval($subparser->query('//div[@class="catalog-ctrls__in"]//span[@class="count__val"]')->item(0)->nodeValue);
-            if ($total_elem_count > $elem_count) {
-                unset($subparser);
-                $pages_count = ceil($total_elem_count / $elem_count);
-                for ($i = 2; $i <= $pages_count; $i++) {
-                    $page_parser = new SectionParser($url . $subsection['link'], $subsection_params);
-                    $page_elements = $page_parser->get_elements_list();
-                    $elements = array_merge($elements, $page_elements);
-                }
-            }
+//             $elem_count = $subparser->query($subparser->xpath['elements'])->length;
+//             $total_elem_count = intval($subparser->query('//div[@class="catalog-ctrls__in"]//span[@class="count__val"]')->item(0)->nodeValue);
+//             if ($total_elem_count > $elem_count) {
+//                 unset($subparser);
+//                 $pages_count = ceil($total_elem_count / $elem_count);
+//                 for ($i = 2; $i <= $pages_count; $i++) {
+//                     $page_parser = new SectionParser($url . $subsection['link']."?PAGEN_1=$i", $subsection_params);
+//                     $page_elements = $page_parser->get_elements_list();
+//                     $elements = array_merge($elements, $page_elements);
+//                 }
+//             }
 
-            $subsection['elements'] = $elements;
-        }
-        $all_sections = array_merge($all_sections, $subsections);
-    }
+//             $subsection['elements'] = $elements;
+//         }
+//         $all_sections = array_merge($all_sections, $subsections);
+//     }
 
-    print_r(count($subsections));
-}
+//     print_r(count($subsections));
+// }
 
-save_json($all_sections, 'sectins_andi.json'); //debug
+// save_json($all_sections, 'sectins_andi.json'); //debug
 
+$json = file_get_contents(__DIR__ . '/../output/sectins_andi.json');
+$all_sections = json_decode($json, true);
 foreach ($all_sections as $section) {
     $xml->add_category($section);
     show_progress($section['name']);
