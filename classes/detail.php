@@ -25,7 +25,7 @@ class Offer extends Parser
         $this->section_path = "";
         $this->description = "";
         $this->preview_desc = "";
-
+        //по наличию параметров определять, что собираем с детальной страницы
         $this->set_name();
         $this->set_price();
         $this->set_properties();
@@ -33,6 +33,7 @@ class Offer extends Parser
         $this->set_description();
         $this->set_brand();
         $this->set_article();
+        //динамически формировать текстовые параметры
     }
     public function set_name()
     {

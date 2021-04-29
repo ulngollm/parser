@@ -38,17 +38,17 @@ class SectionParser extends Parser
         $this->parent_code = $parent_code;
         $this->xpath = $params;
     }
-
-    public function get_section_list(array $params = null, array $parent_section = null)
+    //порядок аргументов можно забыть и запутаться
+    public function get_section_list(array $params = null, array $parent_section = null) : ?array
     {
         if (!$params) $params = $this->xpath;
 
         $parent_node = $parent_section ? $parent_section['node'] : null;
         $parent_code = $parent_section ? $parent_section['code'] : "";
-
+        //трудно вспомнить, че ему надо
 
         $section_list = array();
-        $sections = $this->parser->query($params['path'], $parent_node);
+        $sections = $this->parser->query($params['section'], $parent_node);
         foreach ($sections as $section) {
             $link = $this->parser->query($params['link'], $section)->item(0)->nodeValue;
             $name = trim($this->parser->query($params['name'], $section)->item(0)->nodeValue);
@@ -65,7 +65,7 @@ class SectionParser extends Parser
         return $section_list;
     }
 
-    public function get_elements_list(string $elements_xpath = null)
+    public function get_elements_list(string $elements_xpath = null) : ?array
     {
         if (!$elements_xpath) $elements_xpath = $this->xpath['elements'];
 

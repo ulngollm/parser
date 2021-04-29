@@ -80,4 +80,7 @@ class XMLGenerator
             $properties->appendChild($prop);
         }
     }
+    public function save_xml(string $filename){
+        $this->xml->save(__DIR__."/../output/$filename.xml");
+    }
 }
