@@ -2,7 +2,7 @@
 class SectionParser extends Parser
 {
     public array $xpath;
-    public $parent_code;
+    public string $parent_code;
     public array $sections;
 
     public function __construct(string $url, array $params, string $parent_code = null)

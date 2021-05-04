@@ -1,21 +1,14 @@
 <?php
 $parser_name = 'home_hit_test';
-include_once(__DIR__ . '/../utils/autoload.php');
-include_once(__DIR__ . '/../utils/stat.php');
+const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
+include_once(ROOT . '/utils/autoload.php');
+include_once(ROOT . '/utils/stat.php');
 
 $base_url = 'https://www.home-heat.ru';
 
 // getParentSection($base_url);
 // getSections2ndDepth($root_sections, $base_url, $subsection_params, $parser_name);
 $sections = array();
-$elements = array(
-    'id' : [
-        type:'single',
-        sections: [
-
-        ]
-    ]
-);
 
 
 
@@ -35,8 +28,10 @@ class HomeParser
         'filter' => '//div[@id="filter_products"]'
     );
     public static array $elem_params = array(
-        'element' => '//div[contains(@class,"wa_catalog-section")]/div[contains(@class,"pr_list-item")]',
-        'link'=>'./a[@class="list_item-name"]',
+        'element_id' => '//div[contains(@class,"wa_catalog-section")]/div[contains(@class,"pr_list-item")]/@id',
+        'link'=>'./a[@class="list_item-name"]/@href',
+        'name'=>'./a[@class="list_item-name"]/text()',
+        'class_single'=>'./.[contains(@class, "single-product")]',
         'next_page' => '//ul[@class="pagination"]/li[@class="ax-pag-next"]/a/@href'
     );
     //класс single-product у товаров без предложений
@@ -56,17 +51,16 @@ class HomeParser
         return $root_section_parser->get_section_list();
     }
     
-    public static function getOfferList($url)
+    public static function getOfferList($url, &$elements,  $parent_code = '') //этот метод собирает товары с каждой страницы с товарами
     {
         
-        $parser = new SectionParser($url, self::$elem_params);
+        $parser = new OffersParser($url, self::$elem_params, $elements, $parent_code);
         $elements = $parser->get_elements_list();
-        print_r($elements);
-        array_push($section_elements, ...$elements);
+
         $nextPage = $parser->query(self::$elem_params['next_page']);
         if($nextPage->length){
             $nextPageLink =  self::$base_url.$nextPage->item(0)->value;
-            self::getOfferList($nextPageLink);
+            self::getOfferList($nextPageLink, $elements, $parent_code);
         }
         
         
@@ -104,7 +98,9 @@ class HomeParser
 }
 
 HomeParser::init($base_url, $parser_name);
-HomeParser::getOfferList('https://www.home-heat.ru/catalog/vse-vertikalnye-radiatory/');
+$elements = array();
+HomeParser::getOfferList('https://www.home-heat.ru/catalog/vse-vertikalnye-radiatory/', $elements,'12564');
+save_json($elements, 'home_elem.json');
 
 
 //сначала разделы собрать в json
