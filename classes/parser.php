@@ -1,9 +1,9 @@
 <?php
 class Parser
 {
-    protected DOMXPath $parser;
+    public DOMXPath $parser;
 
-    function __construct($url)
+    public function __construct($url)
     {
         $html = new DOMDocument();
         libxml_use_internal_errors(true);

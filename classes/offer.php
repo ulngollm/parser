@@ -12,53 +12,56 @@ class Offer extends Parser
     public string $price;
     public array $properties;
     public array $images;
-    public DOMDocument $xml;
-    private array $xpath;
 
-    public function __construct(string $url, array $xpath_params, string|array $category_code = "")
+    public function __construct(string $url, array $xpath_params, $category_code = "")
     {
         parent::__construct($url);
-        $this->xpath = $xpath_params;
-        $this->category_code = (gettype($category_code)=="array")? implode(';', $category_code): $category_code;
+        // $this->xpath = $xpath_params;
+        $this->category_code = (gettype($category_code) == "array") ? implode(';', $category_code) : $category_code;
         $this->images = array();
         $this->properties = array();
-        $this->section_path = "";
+        $this->section_path = "";// а это для чего инициализируется? для xml generator?
         $this->description = "";
         $this->preview_desc = "";
         //по наличию параметров определять, что собираем с детальной страницы
-        $this->set_name();
-        $this->set_price();
-        $this->set_properties();
-        $this->set_images();
-        $this->set_description();
-        $this->set_brand();
-        $this->set_article();
-        //динамически формировать текстовые параметры
+        //тогда должно быть четкое соглашение об именовании параметров
+        
+        // а не лучше ли ручками вызывать те методы, которые нужны?
+        // $this->get_name($xpath_params['name']);
+        // $this->get_price($xpath_params['price']);
+        // $this->get_properties($xpath_params['props']);
+        // $this->get_images($xpath_params['images']);
+        // $this->get_description($xpath_params['desc']);
+        // if($this->xpath['brand']) $this->get_brand($xpath_params['brand']);
+        // $this->get_article($xpath_params['article']);
     }
-    public function set_name()
+    public function get_name(string $xpath)
     {
-        $name = $this->parser->query($this->xpath['name'])->item(0);
+        $name = $this->parser->query($xpath)->item(0);
         $this->name = ($name) ? htmlspecialchars($name->textContent) : "";
     }
-    public function set_images()
+
+    public function get_images(string $xpath)
     {
-        $images = $this->parser->query($this->xpath['images']);
+        $images = $this->parser->query($xpath);
         foreach ($images as $image) {
             array_push($this->images, $image->nodeValue);
         }
     }
-    public function set_section_path()
+
+    public function get_section_path(string $xpath)
     {
-        $sections = $this->query($this->xpath['section_path']);
+        $sections = $this->query($xpath);
         foreach ($sections as $key => $section) {
-            $this->section_path .= $key? "/" : "";
+            $this->section_path .= $key ? "/" : "";
             $this->section_path .= $section->nodeValue;
         }
         $this->section_path = trim($this->section_path);
     }
-    public function set_description()
+
+    public function get_description(string $xpath)
     {
-        $description = $this->parser->query($this->xpath['desc'])->item(0);
+        $description = $this->parser->query($xpath)->item(0);
         if ($description) {
             // $description->removeChild($description->childNodes[0]);
             $nodes = $description->childNodes;
@@ -68,9 +71,9 @@ class Offer extends Parser
         }
     }
 
-    public function set_properties()
+    public function get_properties(string $xpath)
     {
-        $properties =  $this->parser->query($this->xpath['props']);
+        $properties =  $this->parser->query($xpath);
         foreach ($properties as $prop) {
             $property = array();
             foreach ($prop->childNodes as $child) {
@@ -78,28 +81,31 @@ class Offer extends Parser
                     array_push($property, htmlspecialchars(trim($child->nodeValue)));
             }
             array_push($this->properties, $property);
+            //$this->properties[] = $property;//почему не так?
         }
     }
-    public function set_preview()
+
+    public function get_preview(string $xpath)
     {
-        $preview = $this->parser->query($this->xpath['preview'])->item(0);
+        $preview = $this->parser->query($xpath)->item(0);
         if ($preview) $this->preview_desc = $preview->C14N();
     }
-    public function set_price()
+
+    public function get_price(string $xpath)
     {
-        $price = $this->parser->query($this->xpath['price'])->item(0);
+        $price = $this->parser->query($xpath)->item(0);
         $this->price = ($price) ? trim($price->nodeValue) : "";
     }
-    public function set_article()
+
+    public function get_article(string $xpath)
     {
-        $article = $this->parser->query($this->xpath['article'])->item(0);
+        $article = $this->parser->query($xpath)->item(0);
         $this->article = ($article) ? trim($article->nodeValue) : "";
     }
-    public function set_brand()
+
+    public function get_brand(string $xpath)
     {
-        if (isset($this->xpath['brand'])) {
-            $brand = $this->parser->query($this->xpath['brand'])->item(0);
+            $brand = $this->parser->query($xpath)->item(0);
             $this->brand = ($brand) ? trim($brand->nodeValue) : "";
-        }
     }
 }
