@@ -57,10 +57,6 @@ class OffersParser extends SectionParser
         );
     }
 
-    public function get_detail_offer_info(){
-
-    }
-
     public function get_offers_list($elem_id){
         $offers = $this->parser->query($this->xpath['offer_link']);
         foreach($offers as $offer){

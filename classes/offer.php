@@ -15,11 +15,11 @@ class Offer extends Parser
     public DOMDocument $xml;
     private array $xpath;
 
-    public function __construct(string $url, array $xpath_params, string $category_code = "")
+    public function __construct(string $url, array $xpath_params, string|array $category_code = "")
     {
         parent::__construct($url);
         $this->xpath = $xpath_params;
-        $this->category_code = $category_code;
+        $this->category_code = (gettype($category_code)=="array")? implode(';', $category_code): $category_code;
         $this->images = array();
         $this->properties = array();
         $this->section_path = "";
