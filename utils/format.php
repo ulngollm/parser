@@ -4,3 +4,8 @@ function remove_attr(string $str){
     $replacer = '<$1>';
     return preg_replace($pattern,$replacer, $str);
 }
+function extract_href(string $html){
+    $pattern = '/href="(.*?)"/i';
+    preg_match($pattern, $html, $matches);
+    return $matches[1];
+}

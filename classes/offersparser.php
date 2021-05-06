@@ -15,8 +15,9 @@ class OffersParser extends SectionParser
         $elements_id = $this->parser->query($xpath['element_id']);
         if ($elements_id->length) {
             foreach ($elements_id as $elem_id) {
-                $id = $elem_id->nodeValue;
-
+                $bx_id = $elem_id->nodeValue;
+                $id = end(explode('_', $bx_id));
+                
                 if ($this->elem_exist($id)) {
                     $this->add_section_link($id);
                     print('duble');
