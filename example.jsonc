@@ -1,0 +1,59 @@
+//вариант 1
+{
+    "offers":{
+        "45631":{
+            "section":[
+                "asdxf544",
+                "asdn789"
+            ],
+            "link": "/path/to/offer",
+            "type":1,
+            "offers":[
+                "link1",
+                "link2"
+            ]
+        },
+        "45611" :{
+            "section":[
+                "asdxf544",
+                "asdn789"
+            ],
+            "link": "/path/to/offer",
+            "type":0,
+            "offers":[
+                "link1",
+                "link2"
+            ]
+        }
+    }
+}
+// вариант 2
+{
+    "offers":{
+        "45631":{
+            "type":1,
+            "link": "/path/to/offer",
+            "section":[
+                "asdxf544",
+                "asdn789"
+            ],
+            "offers":[
+                "link1",
+                "link2"
+            ]
+        },
+        "45611" :{
+            "type":0,
+            "section":[
+                "asdxf544",
+                "asdn789"
+            ],
+            "link": "/path/to/offer",
+        },
+        "7192":{
+            "type":3,
+            "link": "link1",
+            "offer": 45611,
+        }
+    }
+}
