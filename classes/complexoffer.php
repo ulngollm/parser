@@ -1,13 +1,11 @@
 <?php
 class ComplexOffer extends Offer{
     public array $offers;
-    public int $id;
 
-    public function __construct(string $url, array $params, $section_code, int $id)
+    public function __construct(string $url, $section_code, int $id)
     {
-        parent::__construct($url, $params, $section_code);
+        parent::__construct($url, $section_code, $id);
         $this->offers = [];
-        $this->id = $id;   
     }
     public static function get_offers_url(string $base_link, int $id){
         return sprintf($base_link, $id);

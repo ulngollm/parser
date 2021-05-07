@@ -5,19 +5,20 @@ class SectionParser extends Parser
     public string $parent_code;
     public array $sections;
 
-    public function __construct(string $url, array $params, string $parent_code = null)
+    public function __construct(string $url, array $params, ?string $parent_code = null)
     {
         parent::__construct($url);
-        $this->parent_code = $parent_code;
+        if ($parent_code) $this->parent_code = $parent_code;
         $this->xpath = $params;
     }
     //порядок аргументов можно забыть и запутаться
-    public function get_section_list(array $params = null, array $parent_section = null) : ?array
+    public function get_section_list(array $params = null, array $parent_section = null): ?array
     {
         if (!$params) $params = $this->xpath;
 
         $parent_node = $parent_section ? $parent_section['node'] : null;
         $parent_code = $parent_section ? $parent_section['code'] : $this->parent_code;
+
         //трудно вспомнить, че ему надо
 
         $section_list = array();
@@ -39,7 +40,7 @@ class SectionParser extends Parser
         return $section_list;
     }
 
-    public function get_elements_list(string $elements_xpath = null) : ?array
+    public function get_elements_list(string $elements_xpath = null): ?array
     {
         if (!$elements_xpath) $elements_xpath = $this->xpath['elements'];
 
