@@ -37,10 +37,6 @@
                 "asdxf544",
                 "asdn789"
             ],
-            "offers":[
-                "link1",
-                "link2"
-            ]
         },
         "45611" :{
             "type":0,
@@ -51,9 +47,14 @@
             "link": "/path/to/offer",
         },
         "7192":{
-            "type":3,
+            "type":2,
             "link": "link1",
-            "offer": 45611,
+            "model": 45631,
+            "name": "asdasd",
+            "price":13123,
+            "properties":[
+                "bla":"asdasd"
+            ]
         }
     }
 }

@@ -1,6 +1,8 @@
 <?php
+
 class HomeHeatParser
 {
+    const OFFER_TYPE = ['simple', 'complex', 'offer'];
     public static string $base_url;
     public static string $parser_name;
 
@@ -8,18 +10,18 @@ class HomeHeatParser
     public static array $elements = array();
 
     public static array $parent_section_params = array(
-        'section' => '//section[@class="list_products"]//div[@class="container"]/ul/li[position()>1]',
+        'item' => '//section[@class="list_products"]//div[@class="container"]/ul/li[position()>1]',
         'link' => './a/@href',
         'name' => './a/span[@class="tizer-name"]/text()'
     );
     public static array $subsection_params = array(
-        'section' => '//div[@class="products_list"]/div[@class="pr_list-item"]',
+        'item' => '//div[@class="products_list"]/div[@class="pr_list-item"]',
         'link' => './/a[@class="list_item-name"]/@href',
         'name' => './/a[@class="list_item-name"]/text()',
         'filter' => '//div[@id="filter_products"]'
     );
     public static array $elem_section_params = array(
-        'element_id' => '//div[contains(@class,"wa_catalog-section")]/div[contains(@class,"pr_list-item")]/@id',
+        'id' => '//div[contains(@class,"wa_catalog-section")]/div[contains(@class,"pr_list-item")]/@id',
         'link' => './a[@class="list_item-name"]/@href',
         'name' => './a[@class="list_item-name"]/text()',
         'class_single' => './.[contains(@class, "single-product")]',
@@ -46,7 +48,7 @@ class HomeHeatParser
         self::$parser_name = $parser_name;
     }
 
-    public static function getParentSection(): ?array
+    public static function get_parent_sections(): ?array
     {
         $url = self::$base_url."/catalog/";
         $root_section_parser = new SectionParser($url, self::$parent_section_params);
@@ -55,24 +57,24 @@ class HomeHeatParser
         self::add_sections(...$sections);
         return $sections;
     }
-    public static function getOfferList($url, &$elements,  $parent_code = '') 
+
+    public static function get_elements_list($url, &$elements,  $parent_code = '') 
     //собирает товары с каждого раздела с товарами
     {
-
         $parser = new OffersParser($url, self::$elem_section_params, $elements, $parent_code);
         $elements = $parser->get_elements_list();
 
         $nextPage = $parser->query(self::$elem_section_params['next_page']);
         if ($nextPage->length) {
             $nextPageLink =  self::$base_url . $nextPage->item(0)->value;
-            self::getOfferList($nextPageLink, $elements, $parent_code);
+            self::get_elements_list($nextPageLink, $elements, $parent_code);
         }
     }
 
     public static function getSubsections(&$parent_section)
     {
         $url = self::$base_url . $parent_section['link'];
-        $parser = new SectionParser($url, self::$subsection_params, $parent_section['code']);
+        $parser = new SectionParser($url);
         $filter = $parser->query(self::$subsection_params['filter'])->length;
 
         $isElementsPage = (bool) $filter;
@@ -83,7 +85,7 @@ class HomeHeatParser
         } else return null;
     }
     //только для товаров с торговыми предложениями
-    public static function get_complex_offer_data($offer_data, $id){
+    public static function get_complex_offer_and_offers_list($offer_data, $id, &$elements){
         $params = self::$complex_offer_params;
 
         $offer = new ComplexOffer($offer_data['link'], $offer_data['section'], $id);
@@ -91,6 +93,8 @@ class HomeHeatParser
         $offer->get_name($params['name']);
         $offer->get_description($params['desc']);
         $offer->get_offers_list(self::$base_url.$params['base_offers_url']);
+
+        
         return $offer->offers;
         // self::add_offers(...$offer->offers);
     }
@@ -103,13 +107,19 @@ class HomeHeatParser
 
     // только для торговых предложений или простых товаров - тип 1 или 3
     //model - Товар торгового предложения
-    public static function get_detail_offer_data($offer_data, $id)
+    public static function get_detail_offer_info($offer_data, $id)
     {
+        /*offer_data = array(
+            link,
+            type,
+            section|model
+        )*/
+    
         $params = self::$detail_elem_param;
 
         $offer = new Offer($offer_data['link'], $id);
 
-        if($offer_data['type'] == 0){ //если простой товар
+        if($offer_data['type'] != self::OFFER_TYPE['offer']){ //если не предложение
             $offer->set_category($offer_data['section']);
         } else $offer->model = $offer_data['model']; //если торговое предложение
         
