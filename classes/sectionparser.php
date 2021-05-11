@@ -1,57 +1,54 @@
 <?php
 class SectionParser extends Parser
 {
-    public array $xpath;
     public string $parent_code;
-    public array $sections;
 
-    public function __construct(string $url, array $params, ?string $parent_code = null)
+    public function __construct(string $url, ?string $parent_code = null)
     {
         parent::__construct($url);
-        if ($parent_code) $this->parent_code = $parent_code;
-        $this->xpath = $params;
+        $this->parent_code = $parent_code;
     }
-    //порядок аргументов можно забыть и запутаться
-    public function get_section_list(array $params = null, array $parent_section = null): ?array
+
+    public function get_section_list(array $xpath, array &$section_list, ?DOMNode $parent_node = null)
     {
-        if (!$params) $params = $this->xpath;
-
-        $parent_node = $parent_section ? $parent_section['node'] : null;
-        $parent_code = $parent_section ? $parent_section['code'] : $this->parent_code;
-
-        //трудно вспомнить, че ему надо
-
-        $section_list = array();
-        $sections = $this->parser->query($params['section'], $parent_node);
+        $sections = $this->query($xpath['item'], $parent_node);
         foreach ($sections as $section) {
-            $link = $this->parser->query($params['link'], $section)->item(0)->nodeValue;
-            $name = trim($this->parser->query($params['name'], $section)->item(0)->nodeValue);
-            $code = md5($name . $this->parent_code);
-            //добаить картинку?
-            $section_item = array(
-                'node' => $section,
-                'name' => $name,
-                'code' => $code,
-                'link' => $link,
-                'parent_code' => $parent_code
-            );
-            array_push($section_list, $section_item);
+            $section_item = $this->get_one_section_data($section, $xpath);
+            self::add_sections($section_list, $section_item);
         }
-        return $section_list;
     }
 
-    public function get_elements_list(string $elements_xpath = null): ?array
-    {
-        if (!$elements_xpath) $elements_xpath = $this->xpath['elements'];
+    private function get_one_section_data($section, $xpath){
+        $link = $this->query($xpath['link'], $section)->item(0)->nodeValue;
+        $name = trim($this->query($xpath['name'], $section)->item(0)->nodeValue);
+        $code = md5($name . $this->parent_code);
+        //добаить картинку?
+        $section_data = array(
+            'node' => $section,
+            'name' => $name,
+            'code' => $code,
+            'link' => $link,
+            'parent_code' => $this->parent_code
+        );
+        return $section_data;
+    }
 
-        $elements = $this->parser->query($elements_xpath);
-        if ($elements) {
-            $elements_list = array();
-            foreach ($elements as $element) {
-                $link = $element->nodeValue;
-                array_push($elements_list, $link);
+    public static function add_sections(array &$arr, ...$sections){
+        array_push($arr, ...$sections);
+    }
+
+    public function get_elements_links(string $xpath, array &$element_links)
+    {
+        $links = $this->query($xpath);
+        if ($links) {
+            foreach ($links as $link) {
+                $href = $link->nodeValue;
+                self::add_offers($element_links, $href);
             }
-            return $elements_list;
-        } else return null;
+        }
+    }
+
+    public static function add_offers(array &$arr, ...$elems){
+        array_push($arr, ...$elems);
     }
 }
