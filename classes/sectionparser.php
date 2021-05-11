@@ -9,18 +9,22 @@ class SectionParser extends Parser
         $this->parent_code = $parent_code;
     }
 
-    public function get_section_list(array $xpath, array &$section_list, ?DOMNode $parent_node = null)
+    public function get_section_list(array $xpath, array &$section_list, bool $recursive = false, ?DOMNode $parent_node = null)
     {
         $sections = $this->query($xpath['item'], $parent_node);
         foreach ($sections as $section) {
             $section_item = $this->get_one_section_data($section, $xpath);
             self::add_sections($section_list, $section_item);
+            if($recursive){
+                $subsection_parser = new SectionParser($section_item['link'], $section_item['code']);
+                $subsection_parser->get_section_list($xpath, $section_list, $recursive);
+            }
         }
     }
 
     private function get_one_section_data($section, $xpath){
-        $link = $this->query($xpath['link'], $section)->item(0)->nodeValue;
-        $name = trim($this->query($xpath['name'], $section)->item(0)->nodeValue);
+        $link =$this->parse_single_value($xpath['link'], $section);
+        $name = trim($this->parse_single_value($xpath['name'], $section));
         $code = md5($name . $this->parent_code);
         //добаить картинку?
         $section_data = array(
