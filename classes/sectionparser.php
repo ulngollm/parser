@@ -1,12 +1,12 @@
 <?php
 class SectionParser extends Parser
 {
-    public ?string $parent_code;
+    public ?string $section_code;
 
-    public function __construct(string $url, ?string $parent_code = null)
+    public function __construct(string $url, ?string $section_code = null)
     {
         parent::__construct($url);
-        $this->parent_code = $parent_code;
+        $this->section_code = $section_code;
     }
 
     public function get_section_list(array $xpath, array &$section_list, ?DOMNode $parent_node = null)
@@ -18,17 +18,17 @@ class SectionParser extends Parser
         }
     }
     
-    private function get_one_section_data($section, $xpath){
+    private function get_one_section_data(DOMNode $section, array $xpath){
         $link =$this->parse_single_value($xpath['link'], $section);
         $name = $this->parse_single_value($xpath['name'], $section);
-        $code = md5($name . $this->parent_code);
+        $code = md5($name . $this->section_code);
         //добаить картинку?
         $section_data = array(
             'node' => $section,
             'name' => $name,
             'code' => $code,
             'link' => $link,
-            'parent_code' => $this->parent_code
+            'parent_code' => $this->section_code
         );
         return $section_data;
     }
