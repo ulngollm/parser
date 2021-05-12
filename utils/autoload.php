@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 function loadClass($class_name)
 {
-    $path = __DIR__."/../classes/$class_name.php";
+    $path = ROOT."/classes/".strtolower($class_name).".php";
     include_once($path);
 }
 spl_autoload_register('loadClass');
