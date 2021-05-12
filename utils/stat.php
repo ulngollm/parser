@@ -16,3 +16,8 @@ function log_parser_end(string $sitename)
 {
     file_put_contents(ROOT . "/log/$sitename.log", date("Y-m-d H:i:s") . " Парсинг товаров выполнен успешно\n", FILE_APPEND);
 }
+
+register_shutdown_function('save');
+function save(){
+    echo 'Скрипт завершился нормас';
+}
