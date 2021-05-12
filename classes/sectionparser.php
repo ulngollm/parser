@@ -37,6 +37,12 @@ class SectionParser extends Parser
         array_push($arr, ...$sections);
     }
     
+    public static function remove_dom_nodes(array &$arr){
+        foreach($arr as &$section){
+            unset($section['node']);
+        }
+    }
+
     public function get_elements_links(string $xpath, array &$element_links)
     {
         $links = $this->query($xpath);
