@@ -17,14 +17,16 @@ class OffersParser extends SectionParser
         if ($elements_id->length) {
             foreach ($elements_id as $elem_id) {
                 $bx_id = $elem_id->nodeValue;
-                $id = end(explode('_', $bx_id));
+                $bx_id = (explode('_', $bx_id));
+                $id = end($bx_id);
+                print_r($id);
                 
                 if ($this->elem_exist($id)) {
                     $this->add_section_link($id);
                     print('duble');
                 } else {
                     $elem = $this->query('./..', $elem_id)->item(0);
-                    $this->add_new_element($elem, $id);
+                    $this->add_new_element($elem, $id, $xpath);
                     print('elem');
 
                 }
@@ -47,13 +49,13 @@ class OffersParser extends SectionParser
             array_push($section_list, $this->parent_code);
     }
 
-    public function add_new_element(DOMNode $elem, $id)
+    public function add_new_element(DOMNode $elem, $id, $xpath)
     {
-        $link = $this->query($this->xpath['link'], $elem)->item(0)->nodeValue;
-        $name = $this->query($this->xpath['name'], $elem)->item(0)->nodeValue;
+        $link = $this->query($xpath['link'], $elem)->item(0)->nodeValue;
+        $name = $this->query($xpath['name'], $elem)->item(0)->nodeValue;
         if($this->exist_exclude_brand($name)) return false; //не добавлять исключенный бренд
-        $isSimple = $this->query($this->xpath['class_single'], $elem)->length;
-        $type = $isSimple ? "0" : '1'; //simple of complex
+        $isSimple = $this->parse_single_value($xpath['class_single'], $elem);
+        $type = $isSimple? "0" : '1'; //simple of complex
         $this->elements_list[$id] = array(
             'section' => array($this->parent_code),
             'link' => $link,

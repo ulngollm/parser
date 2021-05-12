@@ -2,7 +2,6 @@
 
 class HomeHeatParser
 {
-    const OFFER_TYPE = ['simple', 'complex', 'offer'];
     public static string $base_url;
     public static string $parser_name;
 
@@ -51,7 +50,7 @@ class HomeHeatParser
     public static function get_parent_sections(): ?array
     {
         $url = self::$base_url."/catalog/";
-        $root_section_parser = new SectionParser($url, self::$parent_section_params);
+        $root_section_parser = new SectionParser($url);
         $sections = $root_section_parser->get_section_list();
         unset($root_section_parser);
         self::add_sections(...$sections);
@@ -71,18 +70,19 @@ class HomeHeatParser
         }
     }
 
-    public static function getSubsections(&$parent_section)
+    public static function getSubsections(&$section)
     {
-        $url = self::$base_url . $parent_section['link'];
+        $url = self::$base_url . $section['link'];
         $parser = new SectionParser($url);
-        $filter = $parser->query(self::$subsection_params['filter'])->length;
 
+        //определить тип раздела и сыбаться
+        $filter = $parser->query(self::$subsection_params['filter'])->length;
         $isElementsPage = (bool) $filter;
+        
         if (!$isElementsPage) {
-            $subsections = $parser->get_section_list();
-            $parent_section['elements'] = null;
-            return $subsections;
-        } else return null;
+            $section['type'] = SectionType::SECTION;
+            $parser->get_section_list($xpath, self::$sections);
+        } else $section['type'] = SectionType::OFFER;
     }
     //только для товаров с торговыми предложениями
     public static function get_complex_offer_and_offers_list($offer_data, $id, &$elements){
