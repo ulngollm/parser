@@ -17,7 +17,7 @@ class OffersParser extends SectionParser
         $elements = $this->query($xpath['item']);
         foreach ($elements as $element) {
             $offer = $this->get_one_element_data($element, $xpath, $get_type);
-            print_r($offer);//@debug 
+            // print_r($offer);//@debug 
             $this->add_offer($offer);
         }
     }
@@ -44,7 +44,7 @@ class OffersParser extends SectionParser
         $id = $element['id'];
         $name = $element['name'];
         if ($this->elem_exist($id)) $this->add_section_link($id);
-        elseif (!self::exist_exclude_brand($name)) $this->add_new_elem($element);
+        elseif (!self::exist_exclude_brand($name)) $this->add_new_elem($this->elements, $element);
     }
 
     public static function prepare_id(&$id)
@@ -57,7 +57,7 @@ class OffersParser extends SectionParser
     {
         return array_key_exists($id, $this->elements);
     }
-    //метод только для этого парсера. Потом переделать
+    //todo: метод только для этого парсера. Потом переделать
     public static function exist_exclude_brand($name)
     {
         return (bool) stripos($name, 'guardo');
@@ -70,8 +70,8 @@ class OffersParser extends SectionParser
             array_push($section_links, $this->section_code);
     }
 
-    private function add_new_elem($element){
+    public static function add_new_elem(&$arr, $element){
         $id = $element['id'];
-        $this->elements[$id] = $element;
+        $arr[$id] = $element;
     }
 }

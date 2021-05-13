@@ -33,8 +33,8 @@ class Offer extends Parser
     // }
     public function get_name(string $xpath)
     {
-        $name = $this->parser->query($xpath)->item(0);
-        $this->name = ($name) ? htmlspecialchars($name->textContent) : "";
+        $name = $this->parse_single_value($xpath);
+        return ($name)? htmlspecialchars($name) : "";
     }
 
     public function get_images(string $xpath)
@@ -44,6 +44,7 @@ class Offer extends Parser
         foreach ($images as $image) {
             array_push($this->images, $image->nodeValue);
         }
+        return $this->images;
     }
 
     public function get_section_path(string $xpath)
@@ -55,25 +56,29 @@ class Offer extends Parser
             $this->section_path .= $section->nodeValue;
         }
         $this->section_path = trim($this->section_path);
+        return $this->section_path;
     }
 
-    public function get_description(string $xpath, DOMNode $exclude_node = null)
+    public function get_description(string $xpath, string $exclude_xpath = null)
     {
         $this->description = "";
-        $description = $this->parser->query($xpath)->item(0);
+        $description = $this->query($xpath)->item(0);
+        if($exclude_xpath) $exclude_node = $this->query($exclude_xpath)->item(0);
         if ($description) {
-            if ($exclude_node) $description->removeChild($exclude_node);
+            if ($exclude_xpath) $description->removeChild($exclude_node);
             $nodes = $description->childNodes;
             foreach ($nodes as $child) {
                 $this->description .= $child->C14N();
             }
         }
+        $this->description = Utils::clear_html($this->description);
+        return $this->description;
     }
 
     public function get_properties(string $xpath)
     {
         $this->properties = array();
-        $properties =  $this->parser->query($xpath);
+        $properties =  $this->query($xpath);
         foreach ($properties as $prop) {
             $property = array();
             foreach ($prop->childNodes as $child) {
@@ -82,32 +87,38 @@ class Offer extends Parser
             }
             array_push($this->properties, $property);
         }
+        return $this->properties;
     }
 
     public function get_preview(string $xpath)
     {
         $this->preview_desc = "";
-        $preview = $this->parser->query($xpath)->item(0);
+        $preview = $this->query($xpath)->item(0);
         if ($preview) $this->preview_desc = $preview->C14N();
+        return $this->preview_desc;
     }
 
     public function get_price(string $xpath)
     {
-        $price = $this->parser->query($xpath)->item(0);
+        $price = $this->query($xpath)->item(0);
         $this->price = ($price) ? trim($price->nodeValue) : "";
+        return $this->price;
     }
 
     public function get_article(string $xpath)
     {
-        $article = $this->parser->query($xpath)->item(0);
+        $article = $this->query($xpath)->item(0);
         $this->article = ($article) ? trim($article->nodeValue) : "";
+        return $this->article;
     }
 
     public function get_brand(string $xpath)
     {
-        $brand = $this->parser->query($xpath)->item(0);
+        $brand = $this->query($xpath)->item(0);
         $this->brand = ($brand) ? trim($brand->nodeValue) : "";
+        return $this->brand;
     }
+    
 }
 /*
     общая структура offer
