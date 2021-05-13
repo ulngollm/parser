@@ -15,16 +15,16 @@ $xpath = array(
     'class' => './@class',
     'next_page' => '//ul[@class="pagination"]/li[@class="ax-pag-next"]/a/@href'
 );
-$exclude_brand = 'guardo';
-$parser = new OffersParser($url,$elements, 'aascujli36');
+// $exclude_brand = 'guardo';//не используется, значение захардкодено
+$parser = new OffersParser($url, $elements, 'aascujli36');
 $parser->get_elements_list($xpath,'get_offer_type');
 print_r($elements);
 
 
 //callback для определения типа товара
 //можно встроить любую свою фукнцию
-function get_offer_type(Parser $parser, DOMNode $element, string $xpath){
-    $class_attr = $parser->parse_single_value($xpath, $element);//парсим класс
+function get_offer_type(Parser $parser, DOMNode $element, array $xpath){
+    $class_attr = $parser->parse_single_value($xpath['class'], $element);//парсим класс
     if(strpos($class_attr, 'single-product')) return OfferType::SIMPLE;
     else return OfferType::COMPLEX;
 }

@@ -7,26 +7,27 @@ class OfferType {
 class OffersParser extends SectionParser
 {
     public array $elements;
-    public function __construct(string $url, array &$elements, string $section_code = null)
+    public function __construct(string $url, array &$elements, ?string $section_code = null)
     {
         parent::__construct($url, $section_code);
         $this->elements = &$elements;
     }
-    public function get_elements_list(array $xpath, callable $get_type = null)
+    public function get_elements_list(array $xpath, ?callable $get_type = null)
     {
         $elements = $this->query($xpath['item']);
         foreach ($elements as $element) {
             $offer = $this->get_one_element_data($element, $xpath, $get_type);
+            print_r($offer);//@debug 
             $this->add_offer($offer);
         }
     }
-    private function get_one_element_data(DOMNode $element, array $xpath, callable $get_type = null)
+    private function get_one_element_data(DOMNode $element, array $xpath, ?callable $get_type = null)
     {
         $id = $this->parse_single_value($xpath['id'], $element);
         self::prepare_id($id);
         $name = $this->parse_single_value($xpath['name'], $element);
         $link = $this->parse_single_value($xpath['link'], $element);        
-        $type = $get_type($this, $element, $xpath['class']);
+        $type = $get_type? $get_type($this, $element, $xpath): null;
 
         $element_data = array(
             'id' => $id,

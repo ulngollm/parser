@@ -109,3 +109,17 @@ class Offer extends Parser
         $this->brand = ($brand) ? trim($brand->nodeValue) : "";
     }
 }
+/*
+    общая структура offer
+    (
+        id,
+        link, 
+        type,
+        name, 
+        [section,
+        model,
+        price, 
+        brand, 
+        properties]
+    )
+*/
