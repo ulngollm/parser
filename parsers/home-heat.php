@@ -102,6 +102,7 @@ function get_offer_type(Parser $parser, DOMNode $element, array $xpath)
 echo 'offers start';
 $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?itemId=%d';
 //проблнмка - надо учитывать параметр tabId 
+//и надо определить их количесво
 
 //просто получить список предложений каждого комплексного товара
 foreach ($elements as $id => $offer) {
