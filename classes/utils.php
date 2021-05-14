@@ -35,24 +35,25 @@ class Utils
         return $html;
     }
 
-    public static function save_json(array $arr, string $filename)
+    public static function save_json(array $arr, string $filename, bool $debug = true)
     {
         $data = json_encode($arr, JSON_UNESCAPED_UNICODE);
-        file_put_contents(ROOT . "/tmp/$filename", $data);
+        $dirname = $debug ? 'tmp' : 'output';
+        file_put_contents(ROOT . "/$dirname/$filename", $data);
     }
-
-    public static function show_progress(string $symbol = "-")
+    public static function load_from_json(string $filename, bool $debug = true)
     {
-        echo $symbol;
-    }
-
-    public static function log_parser_start(string $sitename)
-    {
-        file_put_contents(ROOT . "/log/$sitename.log", date("Y-m-d H:i:s") . " Для скрипта запрошено " . memory_get_usage(true) / 1024 . "Кб памяти.\n", FILE_APPEND);
+        $dirname = $debug ? 'tmp' : 'output';
+        $filepath = ROOT . "/$dirname/$filename";
+        if (file_exists($filepath)) {
+            $file = file_get_contents($filepath);
+            $data = json_decode($file, true);
+            return $data;
+        }
+        else return false;
     }
     
-    public static function log_parser_end(string $sitename)
-    {
-        file_put_contents(ROOT . "/log/$sitename.log", date("Y-m-d H:i:s") . " Парсинг товаров выполнен успешно\n", FILE_APPEND);
+    public static function save_progress(array $data){
+        Utils::save_json($data, PARSER_NAME . "_catalog.json", false);
     }
 }
