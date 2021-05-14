@@ -65,7 +65,12 @@ class XMLGenerator
             $img = $this->xml->createElement('image', $image);
             $images->appendChild($img);
         }
-        foreach ($offer->properties as $property) {
+        $this->add_props($offer->properties, $properties);
+    }
+
+    public function add_props(array $props, &$properties)
+    {
+        foreach ($props as $property) {
             $name = trim($property[0], ":");
             $value = $property[1];
             $code = md5($name);
@@ -80,7 +85,49 @@ class XMLGenerator
             $properties->appendChild($prop);
         }
     }
-    public function save_xml(string $filename){
-        $this->xml->save(__DIR__."/../output/$filename.xml");
+
+    public function offers_from_array(array $elements)
+    {
+        foreach ($elements as $id => $obj) {
+            $offer = $this->create_offer();
+
+            foreach ($obj as $key => $value) {
+                if ($key != 'id' || $key != 'model')
+                    $this->add_elem($key, $value, $offer);
+                else $this->add_attr($key, $value, $offer);
+            }
+        }
+    }
+    public function add_html(string $node_name, string $html, DOMElement $parent_node)
+    {
+        $elem = $this->xml->createElement($node_name);
+        $content = $this->xml->createCDATASection($html);
+        $elem->appendChild($content);
+        $parent_node->appendChild($elem);
+    }
+
+    public function add_attr(string $attr_name,string $value, DOMElement $node)
+    {
+        $attr = $this->xml->createAttribute($attr_name);
+        $attr->value = $value;
+        $node->append($attr);
+    }
+
+    public function add_elem(string $node_name, string $value, DOMElement $parent_node)
+    {
+        $elem = $this->xml->createElement($node_name, $value);
+        $parent_node->appendChild($elem);
+    }
+
+    private function create_offer()
+    {
+        $offer = $this->xml->createElement('offer');
+        $this->offers->append($offer);
+        return $offer;
+    }
+
+    public function save_xml(string $filename)
+    {
+        $this->xml->save(ROOT . "/output/$filename.xml");
     }
 }
