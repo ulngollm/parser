@@ -28,7 +28,9 @@ class Parser
 
     public function parse_single_value(string $query, DOMNode $contextNode = null)
     {
-        return trim($this->query($query, $contextNode)->item(0)->nodeValue);
+        
+        $result = $this->query($query, $contextNode)->item(0);
+        if(is_object($result)) return trim($result->nodeValue);
     }
 
 }

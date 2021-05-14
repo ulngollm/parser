@@ -1,6 +1,6 @@
 <?php
 const PARSER_NAME = 'home_hit_2';
-const ROOT = '/home/ully/Документы/parser/catalog_parser';
+const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
 const BASE_URL = 'https://www.home-heat.ru';
 
 include_once(ROOT . '/autoload.php');
@@ -31,7 +31,6 @@ if (!file_exists($data_file)) {
         'name' => './/a[@class="list_item-name"]/text()',
         'filter' => '//div[@id="filter_products"]'
     );
-    print_r(count($sections));
 
     foreach ($sections as &$section) { //section - array(node, name, code, section_code, link)
         $url = BASE_URL . $section['link'];
@@ -42,14 +41,14 @@ if (!file_exists($data_file)) {
             $parser->get_section_list($section_xpath, $sections);
         //массив увеличивается после добавления, цикл foreach удлинняется
         Utils::show_progress();
-        // print_r(count($sections));
+        // print_r(count($sections));//@debug
         break;
     }
     unset($section);
 
     SectionParser::remove_dom_nodes($sections);
     Utils::save_json($sections, PARSER_NAME . ".json");
-    print_r($sections);
+    print_r($sections);//@debug
 } else $sections = json_decode(file_get_contents($data_file), true);
 
 function get_section_type($parser, &$section, $filter_xpath)
@@ -76,6 +75,7 @@ foreach ($sections as $key => $section) {
         $url = BASE_URL . $section['link'];
         $section_code = $section['code'];
         get_elements_list($url, $elements, $section_code, $xpath);
+        Utils::show_progress('e');
         break; //@debug
     }
 }
@@ -99,21 +99,6 @@ function get_offer_type(Parser $parser, DOMNode $element, array $xpath)
     else return OfferType::COMPLEX;
 }
 // ----------------------------------------------------------------
-echo 'offers start';
-$offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?itemId=%d';
-//проблнмка - надо учитывать параметр tabId 
-//и надо определить их количесво
-
-//просто получить список предложений каждого комплексного товара
-foreach ($elements as $id => $offer) {
-    if ($offer['type'] == OfferType::COMPLEX) {
-        $offers = new OffersList($offers_ajax_url, $id);
-        $offers->get_offers_list($elements, $id);
-        print_r($elements);
-        break; //@debug
-    }
-}
-unset($offer);
 
 //собирать детальную инфу
 $xpath = array(
@@ -123,31 +108,49 @@ $xpath = array(
     'props' => '//div[@class="product_about"]//ul[@class="table-of-contents"]/li',
     'desc_exclude' => '//div[@class="product_about"]//ul[@class="table-of-contents"]',
     'desc' => '//div[@class="product_about"]/div[@class="row"]/div',
-    'desc_complex' => '//div[@class="description"]/div[@class="row"]/div[position()=1]'
+    'desc_complex' => '//div[@class="description"]/div[@class="row"]/div[position()=1]',
 );
 foreach ($elements as &$element) {
-    $url = BASE_URL.$element['link'];
-    $category = $element['section']?? null;
+    $url = BASE_URL . $element['link'];
+    $category = $element['section'] ?? null;
     $offer = new Offer($url, $category);
     $element['name'] = $offer->get_name($xpath['name']);
 
     if ($element['type'] == OfferType::COMPLEX) {
         $element['desc'] = $offer->get_description($xpath['desc_complex']);
-    }
-    else {
+        get_offers_list($offer, $element['id'], $elements);
+    } else {
         $element['price'] = $offer->get_price($xpath['price']);
         $element['img'] = $offer->get_images($xpath['img']);
         $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
         $element['props'] = $offer->get_properties($xpath['props']);
     }
+    Utils::show_progress('d');
+    // print_r($element);@debug
 }
 
+function get_offers_list(Offer $parser, int $model_id, array &$elements)
+{
+    $xpath = '//ul[@class="nav nav-tabs"]//li[last()]//@data-key';
+    $max_tab_id = $parser->parse_single_value($xpath);
+
+    $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
+    for ($tab_id = 0; $tab_id <= $max_tab_id; $tab_id++){
+        $offers = new OffersList($offers_ajax_url, $model_id, $tab_id);
+        $offers->get_offers_list($elements, $model_id);
+        Utils::show_progress('o');
+    }
+}
 //todo:: generate xml
+
 
 register_shutdown_function('save', $sections, $elements);
 function save($sections, $elements)
 {
-    print_r($sections);
-    print_r($elements);
+    $catalog = array(
+        'category' => $sections,
+        'offers' => $elements
+    );
+    Utils::save_json($catalog, PARSER_NAME . "catalog.json");
     echo 'Скрипт завершился нормас';
 }
