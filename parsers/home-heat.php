@@ -105,17 +105,20 @@ $xpath = array(
     'name' => '//h1[@class="header_title"]',
     'price' => '//div[@class="descr_product-price"]',
     'img' => '//ul[@id="pr_slider-hor-items"]/li[not(@id="videoBox")]//a/@href',
-    'props' => '//div[@class="product_about"]//ul[@class="table-of-contents"]/li',
     'desc_exclude' => '//div[@class="product_about"]//ul[@class="table-of-contents"]',
     'desc' => '//div[@class="product_about"]/div[@class="row"]/div',
     'desc_complex' => '//div[@class="description"]/div[@class="row"]/div[position()=1]',
+    'props' => array(
+        'item'=>'//div[@class="product_about"]//ul[@class="table-of-contents"]/li',
+        'name'=>'.//i[@class="feature_name"]',
+        'value'=>'.//i[@class="feature_value"]'
+    ) 
 );
 foreach ($elements as &$element) {
     $url = BASE_URL . $element['link'];
     $category = $element['section'] ?? null;
     $offer = new Offer($url, $category);
-    $element['name'] = $offer->get_name($xpath['name']);
-
+    // $element['name'] = $offer->get_name($xpath['name']);
     if ($element['type'] == OfferType::COMPLEX) {
         $element['desc'] = $offer->get_description($xpath['desc_complex']);
         get_offers_list($offer, $element['id'], $elements);
@@ -123,10 +126,10 @@ foreach ($elements as &$element) {
         $element['price'] = $offer->get_price($xpath['price']);
         $element['img'] = $offer->get_images($xpath['img']);
         $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
-        $element['props'] = $offer->get_properties($xpath['props']);
+        $element['props'] = $offer->get_properties($xpath['props']); 
     }
+    print_r($element['id']. PHP_EOL);
     Utils::show_progress('d');
-    // print_r($element);@debug
 }
 
 function get_offers_list(Offer $parser, int $model_id, array &$elements)

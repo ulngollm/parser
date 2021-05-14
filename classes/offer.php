@@ -14,12 +14,11 @@ class Offer extends Parser
     public array $properties;
     public array $images;
 
-    public function __construct(string $url, $category_code = null, $id = null)
+    public function __construct(string $url, $category_code = null)
     {
         parent::__construct($url);
         if ($category_code)
             $this->set_category($category_code);
-        if($id) $this->id = $id;
     }
     public function set_category($category_code)
     {
@@ -27,10 +26,6 @@ class Offer extends Parser
             implode(';', $category_code)
             : $category_code;
     }
-    // public function set_id(string $id = null){
-    //     if(!$id) $this->id = md5($this->name);
-    //     else $this->id = $id;
-    // }
     public function get_name(string $xpath)
     {
         $name = $this->parse_single_value($xpath);
@@ -75,19 +70,25 @@ class Offer extends Parser
         return $this->description;
     }
 
-    public function get_properties(string $xpath)
+    public function get_properties(array $xpath)
     {
-        $this->properties = array();
-        $properties =  $this->query($xpath);
+        $props = array();
+        $properties =  $this->query($xpath['item']);
+        if($properties->length == 0) return null;
         foreach ($properties as $prop) {
-            $property = array();
-            foreach ($prop->childNodes as $child) {
-                if ($child->nodeType == "1")
-                    array_push($property, htmlspecialchars(trim($child->nodeValue)));
+            $name = $this->parse_single_value($xpath['name'], $prop);
+            $value = $this->parse_single_value($xpath['value'], $prop);
+            if($name && $value){
+                $id = md5($name);
+                $property = array(
+                    'name'=>$name,
+                    'value'=>$value
+                );
+                $props[$id] = $property;
             }
-            array_push($this->properties, $property);
+            return null;
         }
-        return $this->properties;
+        return $props;
     }
 
     public function get_preview(string $xpath)
