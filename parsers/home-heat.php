@@ -1,19 +1,22 @@
 <?php
-const PARSER_NAME = 'home_hit_2';
+const PARSER_NAME = 'home_hit_prerelease';
 const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
 const BASE_URL = 'https://www.home-heat.ru';
 
 include_once(ROOT . '/autoload.php');
 
 // ----------------------------------------------------------------
+$data_file = PARSER_NAME.".json";
+$sections = Utils::load_from_json($data_file)?? array();
+$elements = array();
+$catalog = array(
+    'category' => &$sections,
+    'offers' => &$elements
+);
 
-$data_file = ROOT . "/tmp/" . PARSER_NAME . '.json';
-if (!file_exists($data_file)) {
-
+if (!$sections) {
     //get root sections
     $url = BASE_URL . '/catalog/';
-    $sections = array();
-
     $root_xpath = array(
         'item' => '//section[@class="list_products"]//div[@class="container"]/ul/li[position()>1]',
         'link' => './a/@href',
@@ -21,7 +24,6 @@ if (!file_exists($data_file)) {
     );
     $parser = new SectionParser($url);
     $parser->get_section_list($root_xpath, $sections);
-
     unset($parser, $url);
 
     //get list of other section
@@ -31,25 +33,23 @@ if (!file_exists($data_file)) {
         'name' => './/a[@class="list_item-name"]/text()',
         'filter' => '//div[@id="filter_products"]'
     );
-
-    foreach ($sections as &$section) { //section - array(node, name, code, section_code, link)
+    //section - array(node, name, code, section_code, link)
+    foreach ($sections as &$section) {
         $url = BASE_URL . $section['link'];
         $parent_section_code = $section['code'];
         $parser = new SectionParser($url, $parent_section_code);
         get_section_type($parser, $section, $section_xpath['filter']);
         if ($section['type'] == 'section')
             $parser->get_section_list($section_xpath, $sections);
-        //массив увеличивается после добавления, цикл foreach удлинняется
-        Utils::show_progress();
-        // print_r(count($sections));//@debug
-        break;
+        Logger::show_progress();
+        Utils::save_progress($catalog);
+        // break;@debug
     }
     unset($section);
 
     SectionParser::remove_dom_nodes($sections);
     Utils::save_json($sections, PARSER_NAME . ".json");
-    print_r($sections);//@debug
-} else $sections = json_decode(file_get_contents($data_file), true);
+}
 
 function get_section_type($parser, &$section, $filter_xpath)
 {
@@ -61,7 +61,6 @@ function get_section_type($parser, &$section, $filter_xpath)
 
 // ----------------------------------------------------------------
 //get elements list
-$elements = array();
 $xpath = array(
     'item' => '//div[contains(@class,"pr_list-item")]',
     'id' => './@id',
@@ -75,7 +74,8 @@ foreach ($sections as $key => $section) {
         $url = BASE_URL . $section['link'];
         $section_code = $section['code'];
         get_elements_list($url, $elements, $section_code, $xpath);
-        Utils::show_progress('e');
+        Logger::show_progress('e');
+        Utils::save_progress($catalog);
         break; //@debug
     }
 }
@@ -129,7 +129,8 @@ foreach ($elements as &$element) {
         $element['props'] = $offer->get_properties($xpath['props']); 
     }
     print_r($element['id']. PHP_EOL);
-    Utils::show_progress('d');
+    Logger::show_progress('d');
+    Utils::save_progress($catalog);
 }
 
 function get_offers_list(Offer $parser, int $model_id, array &$elements)
@@ -139,21 +140,15 @@ function get_offers_list(Offer $parser, int $model_id, array &$elements)
 
     $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
     for ($tab_id = 0; $tab_id <= $max_tab_id; $tab_id++){
-        $offers = new OffersList($offers_ajax_url, $model_id, $tab_id);
+        $offers = new OffersList($offers_ajax_url, $tab_id, $model_id);
         $offers->get_offers_list($elements, $model_id);
-        Utils::show_progress('o');
+        Logger::show_progress('o');
     }
 }
 //todo:: generate xml
 
 
-register_shutdown_function('save', $sections, $elements);
-function save($sections, $elements)
-{
-    $catalog = array(
-        'category' => $sections,
-        'offers' => $elements
-    );
-    Utils::save_json($catalog, PARSER_NAME . "catalog.json");
+register_shutdown_function('save', $catalog);
+function save(){
     echo 'Скрипт завершился нормас';
 }
