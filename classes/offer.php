@@ -86,7 +86,7 @@ class Offer extends Parser
                 );
                 $props[$id] = $property;
             }
-            return null;
+            else return null;
         }
         return $props;
     }

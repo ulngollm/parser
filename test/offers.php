@@ -1,7 +1,6 @@
 <?php
-const ROOT = '/home/ully/Документы/parser/catalog_parser';
-include_once(ROOT . '/utils/autoload.php');
-include_once(ROOT . '/utils/stat.php');
+const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
+include_once(ROOT . '/autoload.php');
 
 // $url = 'https://www.home-heat.ru/catalog/panelnye-radiatory-s-gorizontalnymi-nasechkami/';//раздел с 4 товарами, удобно для теста
 // $url = 'https://www.home-heat.ru/catalog/trubchatye-radiatory-guardo-retta-6p-s-pryamougolnym-profilem/';// с товарами guardo - проверка исключеия бренда
@@ -28,3 +27,6 @@ function get_offer_type(Parser $parser, DOMNode $element, array $xpath){
     if(strpos($class_attr, 'single-product')) return OfferType::SIMPLE;
     else return OfferType::COMPLEX;
 }
+
+$offers_ajax_url = '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
+echo OffersList::get_offers_url($offers_ajax_url, '123', '1432');
