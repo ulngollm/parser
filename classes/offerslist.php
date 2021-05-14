@@ -1,20 +1,21 @@
 <?php
 class OffersList{
     public ?array $offer_data;
-    public function __construct(string $base_link, int $id, int $tab_id)
+    public function __construct(string $base_link, ...$params)
     {   
-        $this->offer_data = $this->get_offers_list_data($base_link, $tab_id,  $id);
+        $this->offer_data = $this->get_offers_list_data($base_link, ...$params);
     }
     
-    public function get_offers_list_data(string $base_link, $tab_id, $id)
+    public function get_offers_list_data(string $base_link, ...$params)
     {
-        $url = self::get_offers_url($base_link, $tab_id, $id);
+        $url = self::get_offers_url($base_link, ...$params);
+        print($url.PHP_EOL);//@debug
         $json = file_get_contents($url);
         return json_decode($json, true);
     }
 
-    public static function get_offers_url(string $base_link, int $tab_id, int $id){
-        return sprintf($base_link, $tab_id, $id);
+    public static function get_offers_url(string $base_link, ...$params){
+        return sprintf($base_link, ...$params);
     }
 
     public function get_offers_list(array &$offers, $model_id){
