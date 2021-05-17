@@ -50,7 +50,7 @@ class Utils
             $data = json_decode($file, true);
             return $data;
         }
-        else return false;
+        else return array();
     }
     
     public static function save_progress(array $data){

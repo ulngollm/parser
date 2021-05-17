@@ -8,7 +8,7 @@ include_once(ROOT . '/autoload.php');
 
 // ----------------------------------------------------------------
 $data_file = PARSER_NAME.".json";
-$sections = Utils::load_from_json($data_file)?? array();
+$sections = Utils::load_from_json($data_file);
 $elements = array();
 $catalog = array(
     'category' => &$sections,
