@@ -65,9 +65,14 @@ class OffersParser extends SectionParser
 
     private function add_section_link($id)
     {
+        $new_section_code = $this->section_code;
         $section_links = &$this->elements[$id]['section'];
-        if (!in_array($this->section_code, $section_links))
-            array_push($section_links, $this->section_code);
+        if(gettype($section_links)!= 'array'){
+            $section = $this->elements[$id]['section'];
+            $section_links = array($section, $new_section_code);
+        }
+        elseif (!in_array($this->section_code, $section_links))
+            array_push($section_links, $new_section_code);
     }
 
     public static function add_new_elem(&$arr, $element){

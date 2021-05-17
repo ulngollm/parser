@@ -7,7 +7,7 @@ class Offer extends Parser
     public string $category_code;
     public string $article;
     public string $brand;
-    public string $description;
+    public ?string $description;
     public string $preview_desc;
     public string $section_path;
     public string $price;
@@ -56,17 +56,17 @@ class Offer extends Parser
 
     public function get_description(string $xpath, string $exclude_xpath = null)
     {
-        $this->description = "";
+        $this->description = null;
         $description = $this->query($xpath)->item(0);
         if($exclude_xpath) $exclude_node = $this->query($exclude_xpath)->item(0);
         if ($description) {
             if ($exclude_xpath) $description->removeChild($exclude_node);
             $nodes = $description->childNodes;
             foreach ($nodes as $child) {
-                $this->description .= $child->C14N();
+                $this->description .= trim($child->C14N());
             }
+            $this->description = Utils::clear_html($this->description);
         }
-        $this->description = Utils::clear_html($this->description);
         return $this->description;
     }
 
