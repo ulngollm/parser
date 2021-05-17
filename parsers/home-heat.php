@@ -1,7 +1,8 @@
 <?php
-const PARSER_NAME = 'home_hit_prerelease';
+const PARSER_NAME = 'home_hit_debug';
 const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
 const BASE_URL = 'https://www.home-heat.ru';
+const DEBUG = true;
 
 include_once(ROOT . '/autoload.php');
 
@@ -43,7 +44,7 @@ if (!$sections) {
             $parser->get_section_list($section_xpath, $sections);
         Logger::show_progress();
         Utils::save_progress($catalog);
-        // break;@debug
+        if(DEBUG) break;//@debug
     }
     unset($section);
 
@@ -76,7 +77,7 @@ foreach ($sections as $key => $section) {
         get_elements_list($url, $elements, $section_code, $xpath);
         Logger::show_progress('e');
         Utils::save_progress($catalog);
-        break; //@debug
+        if(DEBUG) break; //@debug
     }
 }
 unset($section, $xpath);
@@ -110,7 +111,8 @@ $xpath = array(
     'desc_complex' => '//div[@class="description"]/div[@class="row"]/div[position()=1]',
     'props' => array(
         'item'=>'//div[@class="product_about"]//ul[@class="table-of-contents"]/li',
-        'name'=>'.//i[@class="feature_name"]',
+        'name'=>'.//i[@class="feature_name"]/text()',
+        'tooltip'=>'.//span[@class="feature_tooltip-text"]',
         'value'=>'.//i[@class="feature_value"]'
     ) 
 );
@@ -120,6 +122,7 @@ foreach ($elements as &$element) {
     $offer = new Offer($url, $category);
     // $element['name'] = $offer->get_name($xpath['name']);
     if ($element['type'] == OfferType::COMPLEX) {
+        if(DEBUG) continue;//@debug
         $element['desc'] = $offer->get_description($xpath['desc_complex']);
         get_offers_list($offer, $element['id'], $elements);
     } else {
@@ -128,7 +131,8 @@ foreach ($elements as &$element) {
         $element['props'] = $offer->get_properties($xpath['props']); 
         $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
     }
-    print_r($element['id']. PHP_EOL);
+    if(!DEBUG) unset_debug_props($element);
+    if(DEBUG) print_r($element['id']. PHP_EOL);//@debug
     Logger::show_progress('d');
     Utils::save_progress($catalog);
 }
@@ -144,6 +148,9 @@ function get_offers_list(Offer $parser, int $model_id, array &$elements)
         $offers->get_offers_list($elements, $model_id);
         Logger::show_progress('o');
     }
+}
+function unset_debug_props(&$elem){
+    unset($elem['id'], $elem['type']);
 }
 //todo:: generate xml
 
