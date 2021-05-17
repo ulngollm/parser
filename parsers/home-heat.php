@@ -125,8 +125,8 @@ foreach ($elements as &$element) {
     } else {
         $element['price'] = $offer->get_price($xpath['price']);
         $element['img'] = $offer->get_images($xpath['img']);
-        $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
         $element['props'] = $offer->get_properties($xpath['props']); 
+        $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
     }
     print_r($element['id']. PHP_EOL);
     Logger::show_progress('d');
