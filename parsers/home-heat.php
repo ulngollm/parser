@@ -7,8 +7,8 @@ const DEBUG = true;
 include_once(ROOT . '/autoload.php');
 
 // ----------------------------------------------------------------
-$data_file = PARSER_NAME.".json";
-$sections = Utils::load_from_json($data_file);
+$data_file = "category.json";
+$sections = Utils::load_from_json($data_file, false);
 $elements = array();
 $catalog = array(
     'category' => &$sections,
@@ -44,12 +44,12 @@ if (!$sections) {
             $parser->get_section_list($section_xpath, $sections);
         Logger::show_progress();
         Utils::save_progress($catalog);
-        if(DEBUG) break;//@debug
+        // if(DEBUG) break;//@debug
     }
     unset($section);
 
     SectionParser::remove_dom_nodes($sections);
-    Utils::save_json($sections, PARSER_NAME . ".json");
+    Utils::save_json($sections, "category.json");
 }
 
 function get_section_type($parser, &$section, $filter_xpath)
@@ -122,7 +122,7 @@ foreach ($elements as &$element) {
     $offer = new Offer($url, $category);
     // $element['name'] = $offer->get_name($xpath['name']);
     if ($element['type'] == OfferType::COMPLEX) {
-        if(DEBUG) continue;//@debug
+        // if(DEBUG) continue;//@debug
         $element['desc'] = $offer->get_description($xpath['desc_complex']);
         get_offers_list($offer, $element['id'], $elements);
     } else {
@@ -132,7 +132,7 @@ foreach ($elements as &$element) {
         $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
     }
     if(!DEBUG) unset_debug_props($element);
-    if(DEBUG) print_r($element['id']. PHP_EOL);//@debug
+    if(DEBUG) print_r($element);//@debug
     Logger::show_progress('d');
     Utils::save_progress($catalog);
 }
@@ -156,6 +156,7 @@ function unset_debug_props(&$elem){
 
 
 register_shutdown_function('save', $catalog);
-function save(){
+function save($catalog){
+    Utils::save_progress($catalog);
     echo 'Скрипт завершился нормас';
 }
