@@ -53,7 +53,7 @@ class Utils
         else return array();
     }
     
-    public static function save_progress(array $data){
-        Utils::save_json($data, PARSER_NAME . "_catalog.json", false);
+    public static function save_progress(array $data, string $name_postfix = null){
+        Utils::save_json($data, PARSER_NAME . $name_postfix?? "_catalog.json", false);
     }
 }
