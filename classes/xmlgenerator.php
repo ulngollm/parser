@@ -18,6 +18,7 @@ class XMLGenerator
 
     private function add_elem(string $node_name, ?string $value, DOMNode $parent_node)
     {
+        $value = htmlspecialchars($value);
         $elem = $this->xml->createElement($node_name, $value);
         $parent_node->appendChild($elem);
         return $elem;
@@ -30,12 +31,14 @@ class XMLGenerator
         $node->appendChild($attr);
     }
 
-    private function add_html(string $node_name, string $html, DOMNode $parent_node)
+    private function add_html(string $node_name, ?string $html, DOMNode $parent_node)
     {
-        $elem = $this->xml->createElement($node_name);
-        $content = $this->xml->createCDATASection($html);
-        $elem->appendChild($content);
-        $parent_node->appendChild($elem);
+        if($html){
+            $elem = $this->xml->createElement($node_name);
+            $content = $this->xml->createCDATASection($html);
+            $elem->appendChild($content);
+            $parent_node->appendChild($elem);
+        }
     }
 
     public function convert_from_json(string $filename)
@@ -72,7 +75,7 @@ class XMLGenerator
                 case 'section':
                     $this->add_category_prop($data, $offer);
                     break;
-                case 'images':
+                case 'img':
                 case 'props':
                     $method_name = "add_$param";
                     $this->$method_name($data, $offer);
@@ -91,13 +94,15 @@ class XMLGenerator
         return $offer;
     }
 
-    private function add_category_prop(array|string $sections, DOMNode &$offer)
+    private function add_category_prop($sections, DOMNode &$offer)
     {
-        $value = implode(';', $sections);
+        
+        $value = (gettype($sections) == "array")?
+        implode(';', $sections) : $sections;
         $this->add_elem('category', $value, $offer);
     }
 
-    private function add_images(array $images, DOMNode $offer)
+    private function add_img(array $images, DOMNode $offer)
     {
         $img = $this->add_elem('images', null, $offer);
         foreach ($images as $image) {
@@ -105,11 +110,13 @@ class XMLGenerator
         }
     }
 
-    private function add_props(array $props, DOMNode &$offer)
+    private function add_props(?array $props, DOMNode &$offer)
     {
-        $properties = $this->add_elem('props', null, $offer);
-        foreach ($props as $id => $property) {
-            $this->add_single_property($property, $id, $properties);
+        if($props){
+            $properties = $this->add_elem('props', null, $offer);
+            foreach ($props as $id => $property) {
+                $this->add_single_property($property, $id, $properties);
+            }
         }
     }
 
