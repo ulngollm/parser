@@ -26,11 +26,12 @@ class Parser
         return $this->parser->query($query, $contextNode);
     }
 
-    public function parse_single_value(string $query, DOMNode $contextNode = null)
+    public function parse_single_value(string $query, DOMNode $contextNode = null) : ?string
     {
         
         $result = $this->query($query, $contextNode)->item(0);
         if(is_object($result)) return trim($result->nodeValue);
+        else return null;
     }
 
 }

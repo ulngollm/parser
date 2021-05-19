@@ -1,5 +1,5 @@
 <?php
-const PARSER_NAME = 'home_hit_debug';
+const PARSER_NAME = 'home_hit_count';
 const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
 const BASE_URL = 'https://www.home-heat.ru';
 const DEBUG = true;
@@ -8,7 +8,7 @@ include_once(ROOT . '/autoload.php');
 
 // ----------------------------------------------------------------
 $data_file = "category.json";
-$sections = Utils::load_from_json($data_file, false);
+$sections = Utils::load_from_json($data_file, DEBUG);
 $elements = array();
 $offers = array(); //только тп
 $catalog = array(
@@ -43,6 +43,7 @@ if (!$sections) {
         get_section_type($parser, $section, $section_xpath['filter']);
         if ($section['type'] == 'section')
             $parser->get_section_list($section_xpath, $sections);
+
         Logger::show_progress();
         Utils::save_progress($catalog);
         // if(DEBUG) break;//@debug
@@ -50,7 +51,7 @@ if (!$sections) {
     unset($section);
 
     SectionParser::remove_dom_nodes($sections);
-    Utils::save_json($sections, "category.json");
+    Utils::save_json($sections, PARSER_NAME . "category.json");
 }
 
 // ----------------------------------------------------------------
@@ -66,8 +67,8 @@ $xpath = array(
 foreach ($sections as $key => $section) {
     if (isset($section['type']) &&  $section['type'] == 'offer') {
         $url = BASE_URL . $section['link'];
-        $section_code = $section['code'];
-        get_elements_list($url, $elements, $section_code, $xpath);
+        get_elements_list($url, $elements, $section['code'], $xpath);
+
         Logger::show_progress('e');
         Utils::save_progress($catalog);
         if (DEBUG) break; //@debug
@@ -96,38 +97,43 @@ $xpath = array(
 //добавить в отдельный массив
 
 foreach ($elements as &$element) {
-    $url = BASE_URL . $element['link'];
-    $category = $element['section'] ?? null;
-    $offer = new Offer($url, $category);
-    $element['name'] = $offer->get_name($xpath['name']);
     if ($element['type'] == OfferType::COMPLEX) {
+        $offer = init_offer($element);
+        get_offers_list($offer, $element['id'], $elements);
         $element['desc'] = $offer->get_description($xpath['desc_complex']);
-        get_offers_list($offer, $element['id'], $offers);
-        
-    } elseif ($element['type'] == OfferType::SIMPLE) {
+    }
+}
+unset($element);
+Utils::save_progress($catalog);
+
+foreach ($elements as &$element) {
+    if ($element['type'] != OfferType::COMPLEX) {
+        $offer = init_offer($element);
+        $element['name'] = $offer->get_name($xpath['name']);
         $element['price'] = $offer->get_price($xpath['price']);
         $element['img'] = $offer->get_images($xpath['img']);
         $element['props'] = $offer->get_properties($xpath['props']);
         $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
     }
     if (!DEBUG) unset_debug_props($element);
-    if (DEBUG) print_r($element); //@debug
     Logger::show_progress('d');
     Utils::save_progress($catalog);
 }
+
 unset($element);
 
-foreach ($offers as $element) {
-    $url = BASE_URL . $element['link'];
-    $offer = new Offer($url);
-    $element['name'] = $offer->get_name($xpath['name']);
-    $element['price'] = $offer->get_price($xpath['price']);
-    $element['img'] = $offer->get_images($xpath['img']);
-    $element['props'] = $offer->get_properties($xpath['props']);
-    $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
-    Utils::save_progress($offers, "_offers");
-}
+function get_offers_list(Offer $parser, int $model_id, array &$elements)
+{
+    $xpath = '//ul[@class="nav nav-tabs"]//li[last()]//@data-key';
+    $max_tab_id = $parser->parse_single_value($xpath);
 
+    $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
+    for ($tab_id = 0; $tab_id <= $max_tab_id; $tab_id++) {
+        $offers = new OffersList($offers_ajax_url, $tab_id, $model_id);
+        $offers->get_offers_list_page($elements, $model_id);
+        Logger::show_progress('o');
+    }
+}
 
 function get_section_type($parser, &$section, $filter_xpath)
 {
@@ -154,18 +160,14 @@ function get_offer_type(Parser $parser, DOMNode $element, array $xpath)
     if (strpos($class_attr, 'single-product')) return OfferType::SIMPLE;
     else return OfferType::COMPLEX;
 }
-function get_offers_list(Offer $parser, int $model_id, array &$elements)
-{
-    $xpath = '//ul[@class="nav nav-tabs"]//li[last()]//@data-key';
-    $max_tab_id = $parser->parse_single_value($xpath);
 
-    $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
-    for ($tab_id = 0; $tab_id <= $max_tab_id; $tab_id++) {
-        $offers = new OffersList($offers_ajax_url, $tab_id, $model_id);
-        $offers->get_offers_list($elements, $model_id);
-        Logger::show_progress('o');
-    }
+function init_offer($element)
+{
+    $url = BASE_URL . $element['link'];
+    $category = $element['section']?? null;
+    return new Offer($url, $category);
 }
+
 function unset_debug_props(&$elem)
 {
     unset($elem['id'], $elem['type']);
@@ -173,7 +175,18 @@ function unset_debug_props(&$elem)
 //todo:: generate xml
 
 
+register_shutdown_function('total_result', $sections, $elements, $offers_only);
 register_shutdown_function('save', $catalog);
+
+function total_result($sections, $elements)
+{
+    $offers_only = array_filter($elements, function ($value) {
+        return $value['type'] == OfferType::OFFER;
+    });
+    print('Всего разделов ' . count($sections) . PHP_EOL);
+    print('Всего товаров ' . count($elements) . PHP_EOL);
+    print('Из них ' . count($offers_only) . " торговых предложений\n");
+}
 function save($catalog)
 {
     Utils::save_progress($catalog);

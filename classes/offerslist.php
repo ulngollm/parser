@@ -18,7 +18,7 @@ class OffersList{
         return sprintf($base_link, ...$params);
     }
 
-    public function get_offers_list(array &$offers, $model_id){
+    public function get_offers_list_page(array &$offers, $model_id){
         if($this->offer_data)
             foreach($this->offer_data as $offer){
                 $offer_data = $this->get_one_offer_data($offer, $model_id);
