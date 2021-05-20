@@ -1,8 +1,8 @@
 <?php
-const PARSER_NAME = 'home_hit_count';
+const PARSER_NAME = 'home_hit_release';
 const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
 const BASE_URL = 'https://www.home-heat.ru';
-const DEBUG = true;
+const DEBUG = false;
 
 include_once(ROOT . '/autoload.php');
 
@@ -71,7 +71,7 @@ foreach ($sections as $key => $section) {
 
         Logger::show_progress('e');
         Utils::save_progress($catalog);
-        if (DEBUG) break; //@debug
+        // if (DEBUG) break; //@debug
     }
 }
 unset($section, $xpath);
@@ -102,9 +102,10 @@ foreach ($elements as &$element) {
         get_offers_list($offer, $element['id'], $elements);
         $element['desc'] = $offer->get_description($xpath['desc_complex']);
     }
+    Utils::save_progress($catalog);
 }
+total_result($sections, $elements);
 unset($element);
-Utils::save_progress($catalog);
 
 foreach ($elements as &$element) {
     if ($element['type'] != OfferType::COMPLEX) {
@@ -177,7 +178,12 @@ function unset_debug_props(&$elem)
 
 register_shutdown_function('total_result', $sections, $elements, $offers_only);
 register_shutdown_function('save', $catalog);
+register_shutdown_function('convert', PARSER_NAME.'_catalog.json');
 
+function convert($filename){
+    $xml = new XMLGenerator($filename);
+    $xml->save_xml('home_hit_release');
+}
 function total_result($sections, $elements)
 {
     $offers_only = array_filter($elements, function ($value) {
