@@ -53,7 +53,11 @@ class Utils
         else return array();
     }
     
-    public static function save_progress(array $data, string $name_postfix = null){
-        Utils::save_json($data, PARSER_NAME . $name_postfix?? "_catalog.json", false);
+    public static function save_progress(array $data, string $filename = null){
+        Utils::save_json($data, $filename?? PARSER_NAME."_catalog.json", true);
+    }
+    public static function pause(int $sec){
+        print('timeout 30s...'.PHP_EOL);
+        sleep($sec);
     }
 }
