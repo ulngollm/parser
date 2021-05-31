@@ -54,7 +54,7 @@ class Utils
     }
     
     public static function save_progress(array $data, string $filename = null){
-        Utils::save_json($data, $filename?? PARSER_NAME."_catalog.json", true);
+        Utils::save_json($data, $filename?? PARSER_NAME."_catalog.json", false);
     }
     public static function pause(int $sec){
         print('timeout 30s...'.PHP_EOL);
