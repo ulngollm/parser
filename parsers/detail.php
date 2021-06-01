@@ -30,9 +30,12 @@ foreach ($elements as &$element) {
         $model = init_offer($element);
         Logger::show_progress('x');
         $element['desc'] = $model->get_description($xpath['complex']['desc']);
-        if(!$count) {
-            get_offers_list($model, $element['id'], $offers);
-            set_common_props(current($offers), $element, $xpath['props'], $xpath['img'] );
+        if(!$count) {//@debug
+            $model_offers = array();
+            get_offers_list($model, $element['id'], $model_offers);
+            set_common_props(current($model_offers), $element, $xpath['props'], $xpath['img'] );
+            set_offers_name($offers, $element['name']);
+            array_push($offers, ...$model_offers);
         }
     } else {
         $offer = init_offer($element);
@@ -48,8 +51,17 @@ foreach ($elements as &$element) {
     $count++;
     break;
 }
-
-
+unset($offer);
+// print_r($offers);
+foreach($offers as &$elem){
+    $model_id = $elem['model'];
+    $elem['name'] = $elements[$model_id]['name'];
+}
+function set_offers_name(array &$offers, string $name){
+    foreach($offers as &$offer){
+        $offer['name'] = $name;
+    }
+}
 function set_common_props(array $offer, array &$model, array $xpath_props, string $xpath_img )
 {
     $elem = init_offer($offer);

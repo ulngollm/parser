@@ -1,9 +1,10 @@
 <?php
 const ROOT = '/mnt/c/Users/noknok/Documents/parser/catalog_parser';
-$filename = 'home_hit_debug_catalog.json';
+$filename = 'one_catalog.json';
 
 include_once(ROOT . '/autoload.php');
-
-$xml = new XMLGenerator($filename);
-
-$xml->save_xml('test');
+$catalog = Utils::load_from_json($filename, false);
+$xml = new XMLGenerator();
+$xml->offers_list_from_array($catalog['model']);
+$xml->offers_list_from_array($catalog['offer']);
+$xml->save_xml('one_elem');
