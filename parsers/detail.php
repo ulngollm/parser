@@ -1,7 +1,7 @@
 <?php
-include_once(__DIR__.'/../config.php');
-error_reporting(E_ALL);
-
+include_once(__DIR__ . '/../config.php');
+const MAX_OFFERS_COUNT = 1000;
+$page = 1;
 //собирать детальную инфу
 $xpath = array(
     'name' => '//h1[@class="header_title"]',
@@ -9,7 +9,10 @@ $xpath = array(
     'img' => '//ul[@id="pr_slider-hor-items"]/li[not(@id="videoBox")]//a/@href',
     'desc_exclude' => '//div[@class="product_about"]//ul[@class="table-of-contents"]',
     'desc' => '//div[@class="product_about"]/div[@class="row"]/div',
-    'desc_complex' => '//div[@class="description"]/div[@class="row"]/div[position()=1]',
+    'complex' => array(
+        'desc' => '//div[@class="description"]/div[@class="row"]/div[position()=1]',
+        'img' => '//ul[@id="content_slider-items"]/li/img/@src'
+    ),
     'props' => array(
         'item' => '//div[@class="product_about"]//ul[@class="table-of-contents"]/li',
         'name' => './/i[@class="feature_name"]/text()',
@@ -17,58 +20,55 @@ $xpath = array(
         'value' => './/i[@class="feature_value"]'
     )
 );
-//получить список торговых предложений
-//добавить в отдельный массив
+$count = 0;
 $page = 1;
-$filename_template = ROOT."/output/catalog_%d.json";
-while(file_exists(sprintf($filename_template, $page))){
-    $filename = "catalog_$page.json"; 
-    $elements = Utils::load_from_json($filename, false);
-    // print_r($elements);
-    foreach ($elements as &$element) {
-        if ($element['type'] == OfferType::COMPLEX) {
-            $offer = init_offer($element);
-            get_offers_list($offer, $element['id'], $elements);
-            $element['desc'] = $offer->get_description($xpath['desc_complex']);
+foreach ($elements as &$element) {
+    // if((count($offers) + $count) / MAX_OFFERS_COUNT > $page) {
+    //     $page++;
+    //     Utils::pause(30);
+    if ($element['type'] == OfferType::COMPLEX) {
+        $model = init_offer($element);
+        Logger::show_progress('x');
+        $element['desc'] = $model->get_description($xpath['complex']['desc']);
+        if(!$count) {
+            get_offers_list($model, $element['id'], $offers);
+            set_common_props(current($offers), $element, $xpath['props'], $xpath['img'] );
         }
-        Utils::save_progress($elements, $filename);
+    } else {
+        $offer = init_offer($element);
+        Logger::show_progress('d');
+        $element['name'] = $offer->get_name($xpath['name']);
+        $element['price'] = $offer->get_price($xpath['price']);
+        $element['img'] = $offer->get_images($xpath['img']);
+        $element['props'] = $offer->get_properties($xpath['props']);
+        $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
     }
-    unset($elements);
-    die();
+    // if (!DEBUG) unset_debug_props($element);
+    Utils::save_progress($catalog);
+    $count++;
     break;
-    $page++;
 }
-print_r(2);
 
 
-// Logger::total_result($sections, $elements);
-// unset($element);
-
-// foreach ($elements as &$element) {
-//     if ($element['type'] != OfferType::COMPLEX) {
-//         $offer = init_offer($element);
-//         $element['name'] = $offer->get_name($xpath['name']);
-//         $element['price'] = $offer->get_price($xpath['price']);
-//         $element['img'] = $offer->get_images($xpath['img']);
-//         $element['props'] = $offer->get_properties($xpath['props']);
-//         $element['desc'] = $offer->get_description($xpath['desc'], $xpath['desc_exclude']);
-//     }
-//     if (!DEBUG) unset_debug_props($element);
-//     Logger::show_progress('d');
-//     Utils::save_progress($catalog);
-// }
-
-unset($element);
+function set_common_props(array $offer, array &$model, array $xpath_props, string $xpath_img )
+{
+    $elem = init_offer($offer);
+    $props = $elem->get_properties($xpath_props);
+    $images = $elem->get_images($xpath_img);
+    $model['img'] = $images;
+    $model['props'] = $props;
+    unset($elem);
+}
 
 function unset_debug_props(&$elem)
 {
     unset($elem['id'], $elem['type']);
 }
 
-function init_offer($element)
+function init_offer(array $element)
 {
     $url = BASE_URL . $element['link'];
-    $category = $element['section']?? null;
+    $category = $element['section'] ?? null;
     return new Offer($url, $category);
 }
 
