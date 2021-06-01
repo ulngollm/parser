@@ -1,6 +1,8 @@
 <?php
-const ROOT = '/home/ully/Документы/parser/catalog_parser';
-include_once(ROOT . '/utils/autoload.php');
+// const ROOT = '/home/ully/Документы/parser/catalog_parser';
+// include_once(ROOT . '/autoload.php');
+include_once(__DIR__ . '/../config.php');
+
 
 
 // $exp_result = '<span><a>ccskrссылка</a>test</span>';
@@ -55,4 +57,50 @@ $html = '<h2></h2>&#xD;
                                                 </p>
                                                        ';
 Utils::clear_html($html);
-echo $html;
+// echo $html;
+
+$html = '<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+<h2></h2>
+<h2 style="text-align: justify;">Трубчатые радиаторы Arbonia высотой 190 мм (белые)</h2>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+С тех недавних пор, как «батареи» (понимаемые сугубо утилитарно) стали «радиаторами» (т.е. значимым предметом интерьера), трубчатые радиаторы Арбония успели создать себе репутацию стабильно востребованной классики на рынке отопительных приборов.
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+Их конструкция, формируемая отдельными секциями, может быть органично вписана практически в любой интерьер. В еще большей степени шансы на это повышает возможность покрасить радиатор в один из цветов широкой палитры, разработанной производителем.
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+Трубчатые радиаторы Arbonia производятся из стали на современном высокотехнологичном оборудовании. Перед выходом с завода они проходят все предусмотренные испытания на прочность по давлению и герметичности. Радиаторы отопления Arbonia безопасны и долговечны в использовании. Срок их гарантии составляет 10 лет.
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+Характеристики:<br>
+</p>
+<p style="text-align: justify;">
+</p>
+<p style="text-align: justify;">
+</p>';
+
+echo Utils::clear_html($html);
