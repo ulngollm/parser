@@ -5,15 +5,14 @@ class XMLGenerator
     private DOMElement $categories;
     private DOMElement $offers;
 
-    public function __construct(?string $filename = null)
+    public function __construct()
     {
         $this->xml = new DOMDocument('1.0', 'utf-8');
         $this->xml->formatOutput = true;
 
         $root = $this->add_elem('catalog', null, $this->xml);
-        $this->categories = $this->add_elem('catalog', null, $root);
+        $this->categories = $this->add_elem('categories', null, $root);
         $this->offers = $this->add_elem('offers', null, $root);
-        if ($filename) $this->convert_from_json($filename);
     }
 
     private function add_elem(string $node_name, ?string $value, DOMNode $parent_node)
@@ -33,7 +32,7 @@ class XMLGenerator
 
     private function add_html(string $node_name, ?string $html, DOMNode $parent_node)
     {
-        if($html){
+        if ($html) {
             $elem = $this->xml->createElement($node_name);
             $content = $this->xml->createCDATASection($html);
             $elem->appendChild($content);
@@ -41,15 +40,19 @@ class XMLGenerator
         }
     }
 
-    public function convert_from_json(string $filename)
+    public function convert_from_json(array $json)
     {
-        $catalog = Utils::load_from_json($filename, false);
-        foreach ($catalog['category'] as $category)
-            $this->add_category($category);
-        foreach ($catalog['offers'] as $offer)
-            $this->add_offer_from_array($offer);
+        if (isset($json['category'])) {
+            foreach ($json['category'] as $category)
+                $this->add_category($category);
+        }
+        $this->offers_list_from_array($json['offers']);
     }
 
+    public function offers_list_from_array(array $offers){
+        foreach ($offers as $offer)
+            $this->add_offer_from_array($offer);
+    }
     public function add_category(array $section)
     {
         $category = $this->add_elem('category', $section['name'], $this->categories);
@@ -96,9 +99,9 @@ class XMLGenerator
 
     private function add_category_prop($sections, DOMNode &$offer)
     {
-        
+
         $value = (gettype($sections) == "array")?
-        implode(';', $sections) : $sections;
+            implode(';', $sections) : $sections;
         $this->add_elem('category', $value, $offer);
     }
 
@@ -112,19 +115,24 @@ class XMLGenerator
 
     private function add_props(?array $props, DOMNode &$offer)
     {
-        if($props){
+        if ($props) {
             $properties = $this->add_elem('props', null, $offer);
             foreach ($props as $id => $property) {
-                $this->add_single_property($property, $id, $properties);
+                $this->add_single_property($property, $properties);
             }
         }
     }
 
-    private function add_single_property(array $property, string $id,  DOMNode &$properties)
+    private function add_single_property(array $property,  DOMNode &$properties)
     {
-        $prop = $this->add_elem('property', $property['value'], $properties);
-        $this->add_attr('id', $id, $prop);
-        $this->add_attr('name', $property['name'], $prop);
+
+        $prop = $this->add_elem('prop', $property['value'], $properties);
+        foreach($property as $key=>$value){
+            if($key != "value"){
+                print_r($key);
+                $this->add_attr($key, $value, $prop);
+            }
+        }
     }
 
     public function save_xml(string $filename)

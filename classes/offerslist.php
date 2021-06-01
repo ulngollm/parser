@@ -28,14 +28,19 @@ class OffersList{
     }
 
     public function get_one_offer_data(array $offer, $model_id){
-        $id = $offer['id'];
         $link = Utils::extract_href($offer['name']);
-        return array(
-            'id'=>$id,
-            'type'=>OfferType::OFFER,
-            'model'=>$model_id,
-            'link'=>$link
-        );
+        unset($offer['name'], $offer['canBuy']);
+
+        foreach($offer['props'] as $prop_code=>&$prop_value){
+            $prop_value = array(
+                'code'=>$prop_code,
+                'value'=>$prop_value
+            );
+        }
+        $offer['type'] = OfferType::OFFER;
+        $offer['model'] = $model_id;
+        $offer['link']= $link;
+        return $offer;
     }
     
 }

@@ -63,7 +63,7 @@ class Offer extends Parser
             if ($exclude_xpath) $description->removeChild($exclude_node);
             $nodes = $description->childNodes;
             foreach ($nodes as $child) {
-                $this->description .= trim($child->C14N());
+                $this->description .= trim($child->C14N(), " ");
             }
             $this->description = Utils::clear_html($this->description);
         }
@@ -81,10 +81,11 @@ class Offer extends Parser
             if($name && $value){
                 $id = md5($name);
                 $property = array(
+                    'id'=>$id,
                     'name'=>$name,
                     'value'=>$value
                 );
-                $props[$id] = $property;
+                $props[] = $property;
             }
             else return null;
         }
