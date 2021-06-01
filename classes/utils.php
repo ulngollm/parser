@@ -17,7 +17,7 @@ class Utils
 
     public static function remove_symbols(string $html)
     {
-        $pattern = '/&.*;/i';
+        $pattern = '/(&.*;)|(\n)|(\t)|(\r)/i';
         $replacer = '';
         return preg_replace($pattern, $replacer, $html);
     }
@@ -32,12 +32,13 @@ class Utils
         $html = self::remove_attr($html);
         $html = self::remove_symbols($html);
         $html = self::remove_empty_tags($html);
+
         return $html;
     }
 
     public static function save_json(array $arr, string $filename, bool $debug = true)
     {
-        $data = json_encode($arr, JSON_UNESCAPED_UNICODE);
+        $data = json_encode($arr, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         $dirname = $debug ? 'tmp' : 'output';
         file_put_contents(ROOT . "/$dirname/$filename", $data);
     }
