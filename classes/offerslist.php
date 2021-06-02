@@ -28,9 +28,28 @@ class OffersList{
     }
 
     public function get_one_offer_data(array $offer, $model_id){
+        if(OFFERS_EXPAND == true){
+            return self::get_one_expand_data($offer, $model_id);
+        }
+        else{ 
+            return self::get_one_short_data($offer, $model_id);
+        } 
+    }
+
+    private static function get_one_short_data($offer, $model_id){
+        $link = Utils::extract_href($offer['name']);
+        return array(
+            'id'=>$offer['id'],
+            'link'=>$link,
+            'model'=>$model_id,
+            'type' => OfferType::OFFER
+        );
+    }
+
+    private static function get_one_expand_data($offer, $model_id){
         $link = Utils::extract_href($offer['name']);
         unset($offer['name'], $offer['canBuy']);
-
+    
         foreach($offer['props'] as $prop_code=>&$prop_value){
             $prop_value = array(
                 'code'=>$prop_code,

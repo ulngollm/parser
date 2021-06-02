@@ -38,10 +38,4 @@ SectionParser::remove_dom_nodes($sections);
 Utils::save_json($sections, "category.json");
 
 
-function get_section_type($parser, &$section, $filter_xpath)
-{
-    $hasFilter = $parser->query($filter_xpath)->length;
-    if ($hasFilter) {
-        $section['type'] = 'offer';
-    } else $section['type'] = 'section';
-}
+
