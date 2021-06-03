@@ -2,7 +2,13 @@
 include_once(__DIR__ . '/../config.php');
 include_once(__DIR__ . '/functions.php');
 
-$url = 'https://www.home-heat.ru/catalog/trubchatye-radiatory-kzto/trubchatye-radiatory-kzto-paralleli-g-1034-mm-shirinoy/#tabpanel-scroll_hash';
+
+// $url = 'https://www.home-heat.ru/catalog/trubchatye-radiatory-kzto/trubchatye-radiatory-kzto-paralleli-g-1034-mm-shirinoy/';
+// $id = 90883;
+// $url = 'https://www.home-heat.ru/catalog/trubchatye-radiatory-kzto/trubchatye-radiatory-kzto-paralleli-g-1534-mm-shirinoy/';
+// $id = 90885;
+$url = 'https://www.home-heat.ru/catalog/trubchatye-radiatory-kzto/trubchatye-radiatory-kzto-paralleli-g-1734-mm-shirinoy/';
+$id = 90886;
 
 $xpath = array(
     'name' => '//h1[@class="header_title"]',
@@ -24,7 +30,6 @@ $xpath = array(
 
 $parser =  new Offer($url);
 Logger::show_progress('x');
-$id = 90883;
 $offers = array();
 $element = array();
 $catalog = array(
