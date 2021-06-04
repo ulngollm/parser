@@ -12,6 +12,6 @@ $elem_params = array(
     'next_page' => '//ul[@class="pagination"]/li[@class="ax-pag-next"]/a/@href',
 );
 $elements = array();
-$parser = new OffersParser($url, $elem_params, $elements, '');
+$parser = new OfferListParser($url, $elem_params, $elements, '');
 $elements = $parser->get_elements_list();
 save_json($elements, 'test_elem.json');

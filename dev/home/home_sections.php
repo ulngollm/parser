@@ -54,7 +54,7 @@ class HomeParser
     public static function getOfferList($url, &$elements,  $parent_code = '') //этот метод собирает товары с каждой страницы с товарами
     {
         
-        $parser = new OffersParser($url, self::$elem_params, $elements, $parent_code);
+        $parser = new OfferListParser($url, self::$elem_params, $elements, $parent_code);
         $elements = $parser->get_elements_list();
 
         $nextPage = $parser->query(self::$elem_params['next_page']);

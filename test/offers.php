@@ -15,7 +15,7 @@ $xpath = array(
     'next_page' => '//ul[@class="pagination"]/li[@class="ax-pag-next"]/a/@href'
 );
 // $exclude_brand = 'guardo';//не используется, значение захардкодено
-$parser = new OffersParser($url, $elements, 'aascujli36');
+$parser = new OfferListParser($url, $elements, 'aascujli36');
 $parser->get_elements_list($xpath,'get_offer_type');
 print_r($elements);
 
@@ -29,4 +29,4 @@ function get_offer_type(Parser $parser, DOMNode $element, array $xpath){
 }
 
 $offers_ajax_url = '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
-echo OffersList::get_offers_url($offers_ajax_url, '123', '1432');
+echo VariationList::get_offers_url($offers_ajax_url, '123', '1432');

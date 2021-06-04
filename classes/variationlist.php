@@ -1,5 +1,5 @@
 <?php
-class OffersList{
+class VariationList{
     public ?array $offer_data;
     public function __construct(string $base_link, ...$params)
     {   
@@ -22,7 +22,7 @@ class OffersList{
         if($this->offer_data)
             foreach($this->offer_data as $offer){
                 $offer_data = $this->get_one_offer_data($offer, $model_id);
-                OffersParser::add_new_elem($offers, $offer_data);
+                OfferListParser::add_new_elem($offers, $offer_data);
             }
         else return null;
     }

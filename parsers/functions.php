@@ -41,7 +41,7 @@ function get_offers_list(Offer $parser, int $model_id, array &$elements)
 
     $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
     for ($tab_id = 0; $tab_id <= $max_tab_id; $tab_id++) {
-        $offers = new OffersList($offers_ajax_url, $tab_id, $model_id);
+        $offers = new VariationList($offers_ajax_url, $tab_id, $model_id);
         $offers->get_offers_list_page($elements, $model_id);
         Logger::show_progress('o');
     }
@@ -52,7 +52,7 @@ function get_elements_list(array &$section, array &$elements, array $xpath, $pag
     list('link'=>$url, 'code'=>$section_code) =  $section;
 
     $url = "$url?PAGEN=$page";
-    $parser = new OffersParser($url, $elements, $section_code);
+    $parser = new OfferListParser($url, $elements, $section_code);
     $parser->get_elements_list($xpath, 'get_offer_type');
     $section['lastPage'] = $page;
     if ($page == 1) {

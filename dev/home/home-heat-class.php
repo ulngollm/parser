@@ -60,7 +60,7 @@ class HomeHeatParser
     public static function get_elements_list($url, &$elements,  $parent_code = '') 
     //собирает товары с каждого раздела с товарами
     {
-        $parser = new OffersParser($url, self::$elem_section_params, $elements, $parent_code);
+        $parser = new OfferListParser($url, self::$elem_section_params, $elements, $parent_code);
         $elements = $parser->get_elements_list();
 
         $nextPage = $parser->query(self::$elem_section_params['next_page']);

@@ -1,5 +1,5 @@
 <?php
-class OffersParser extends SectionParser
+class OfferListParser extends SectionParser
 {
     public array $elements;
     public function __construct(string $url, array &$elements, ?string $section_code = null)
