@@ -1,7 +1,9 @@
 <?php
-include_once(__DIR__.'/../config.php');
-include_once(__DIR__.'/functions.php');
+include_once(__DIR__ . '/../config.php');
+include_once(__DIR__ . '/functions.php');
 
+$modelSectionLinks = Utils::load_from_json('tmp/elem_sect_link.json');
+if (!isset($sections)) $sections = Utils::load_from_json('tmp/sections.json');
 // $sections = Utils::load_from_json(FILENAME, DEBUG);
 $url = 'https://www.home-heat.ru/catalog/trubchatye-radiatory-s-bokovym-podklyucheniem/';
 
@@ -23,13 +25,27 @@ $xpath = array(
 );
 // $page = 1;
 
-get_elements_list($url, $elements, '', $xpath);
+foreach ($sections as $section) {
+    $url = $section['link'];
+    // echo $lastPage . PHP_EOL;
+    $pages_count = $section['countPages'] ?? get_elements_list($section, $elements, $xpath);
+    $lastPage = $section['lastPage'];
+    if ($pages_count) {
+        $page = $lastPage + 1;
+        for ($i = $page; $i <= $pages_count; $i++) {
+            get_elements_list($url, $elements, $code, $xpath, $page);
+        }
+        print_r($elements);
+        unset($section);
+    }
+}
+
 Logger::show_progress('s');
 unset($xpath);
 print(count($elements) . PHP_EOL);
 
 
-include_once(__DIR__.'/detail.php');
+include_once(__DIR__ . '/detail.php');
 
 
 

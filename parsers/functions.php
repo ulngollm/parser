@@ -47,12 +47,14 @@ function get_offers_list(Offer $parser, int $model_id, array &$elements)
     }
 }
 
-function get_elements_list(string $url, array &$elements, string $section_code, array $xpath, $page = 1)
+function get_elements_list(array &$section, array &$elements, array $xpath, $page = 1)
 {
+    list('link'=>$url, 'code'=>$section_code) =  $section;
+
     $url = "$url?PAGEN=$page";
     $parser = new OffersParser($url, $elements, $section_code);
     $parser->get_elements_list($xpath, 'get_offer_type');
-
+    $section['lastPage'] = $page;
     if ($page == 1) {
         $pagesCount = $parser->parse_single_value($xpath['last_page_num']);
         return $pagesCount;
