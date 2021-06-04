@@ -36,16 +36,16 @@ class Utils
         return $html;
     }
 
-    public static function save_json(array $arr, string $filename, bool $debug = true)
+    public static function save_json(array $arr, string $filepath)
     {
         $data = json_encode($arr, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        $dirname = $debug ? 'tmp' : 'output';
-        file_put_contents(ROOT . "/$dirname/$filename", $data);
+        // $dirname = $debug ? 'tmp' : 'output';
+        file_put_contents(ROOT . "/$filepath", $data);
     }
-    public static function load_from_json(string $filename, bool $debug = true)
+    public static function load_from_json(string $filepath, bool $debug = true): array
     {
-        $dirname = $debug ? 'tmp' : 'output';
-        $filepath = ROOT . "/$dirname/$filename";
+        // $dirname = $debug ? 'tmp' : 'output';
+        // $filepath = ROOT . "/$dirname/$filename";
         if (file_exists($filepath)) {
             $file = file_get_contents($filepath);
             $data = json_decode($file, true);
