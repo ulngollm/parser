@@ -28,12 +28,7 @@ class VariationList{
     }
 
     public function get_one_offer_data(array $offer, $model_id){
-        if(OFFERS_EXPAND == true){
-            return self::get_one_expand_data($offer, $model_id);
-        }
-        else{ 
-            return self::get_one_short_data($offer, $model_id);
-        } 
+        return (OFFERS_EXPAND == true)? self::get_one_expand_data($offer, $model_id): self::get_one_short_data($offer, $model_id);
     }
 
     private static function get_one_short_data($offer, $model_id){

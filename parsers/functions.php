@@ -51,12 +51,13 @@ function get_elements_list(array &$section, array &$elements, array $xpath, $pag
 {
     list('link'=>$url, 'code'=>$section_code) =  $section;
 
-    $url = "$url?PAGEN=$page";
+    $url = BASE_URL."$url?PAGEN_1=$page";
     $parser = new OfferListParser($url, $elements, $section_code);
     $parser->get_elements_list($xpath, 'get_offer_type');
     $section['lastPage'] = $page;
     if ($page == 1) {
         $pagesCount = $parser->parse_single_value($xpath['last_page_num']);
+        $section['pagesCount'] = (int)$pagesCount;
         return $pagesCount;
     } else return null;
 }

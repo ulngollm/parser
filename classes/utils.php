@@ -42,20 +42,20 @@ class Utils
         // $dirname = $debug ? 'tmp' : 'output';
         file_put_contents(ROOT . "/$filepath", $data);
     }
-    public static function load_from_json(string $filepath, bool $debug = true): array
+    public static function load_from_json(string $filepath, bool $debug = true): ?array
     {
         // $dirname = $debug ? 'tmp' : 'output';
         // $filepath = ROOT . "/$dirname/$filename";
-        if (file_exists($filepath)) {
-            $file = file_get_contents($filepath);
+        if (file_exists(ROOT."/$filepath")) {
+            $file = file_get_contents(ROOT."/$filepath");
             $data = json_decode($file, true);
             return $data;
         }
-        else return array();
+        else return null;
     }
     
-    public static function save_progress(array $data, string $filename = null){
-        Utils::save_json($data, $filename?? PARSER_NAME."_catalog.json", false);
+    public static function save_progress(array $data, string $filename = PARSER_NAME){
+        Utils::save_json($data,  ROOT. "tmp/{$filename}", false);
     }
     public static function pause(int $sec){
         print('timeout 30s...'.PHP_EOL);

@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__ . '/../config.php');
 include_once(__DIR__ . '/functions.php');
-const MAX_OFFERS_COUNT = 1000;
+// const MAX_OFFERS_COUNT = 1000;
 $page = 1;
 //собирать детальную инфу
 $xpath = array(
