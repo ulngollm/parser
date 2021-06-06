@@ -86,10 +86,10 @@ class OfferListParser extends SectionParser
 
     public static function add_new_elem(&$arr, $element)
     {
-        print('new');
+        
         $id = $element['id'];
         $arr[$id] = $element;
-        self::$section_link_list[$id] = $element['section'];
+        if(isset($element['section'])) self::$section_link_list[$id] = $element['section'];
         Utils::save_json(self::$section_link_list, self::SECTION_LINKS_FILENAME);
     }
 }

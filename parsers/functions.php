@@ -75,3 +75,15 @@ function get_section_type($parser, &$section, $filter_xpath)
         $section['type'] = 'offer';
     } else $section['type'] = 'section';
 }
+
+function save_elements(array &$elements)
+{
+    static $list_page = 1;
+    if (count($elements) / MAX_OFFERS_COUNT > $list_page) {
+        // $elements = array_splice($elements, MAX_OFFERS_COUNT);
+        $list_page++;
+        print(count($elements).PHP_EOL);
+        // Utils::pause(10);
+    }
+    Utils::save_json($elements, ELEM_FILE);
+}

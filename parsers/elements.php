@@ -16,8 +16,8 @@ $xpath = array(
 );
 $section_tmp_file = 'tmp/sections.json';
 const ELEM_FILE = 'output/elem.json';
-if (!isset($sections)) $sections = Utils::load_from_json('tmp/sections.json') ?? Utils::load_from_json('output/category.json') ?? die('The section list is empty');
-$elements = Utils::load_from_json('output/elem.json')?? array();
+if (!isset($sections)) $sections = Utils::load_from_json($section_tmp_file) ?? Utils::load_from_json('output/category.json') ?? die('The section list is empty');
+$elements = Utils::load_from_json(ELEM_FILE)?? array();
 
 foreach ($sections as $key => &$section) {
     if ($section['type'] == 'offer') {
@@ -28,23 +28,12 @@ foreach ($sections as $key => &$section) {
                 echo $page;
                 get_elements_list($section, $elements, $xpath, $page);
                 save_elements($elements);
-                Utils::save_json($sections, 'tmp/sections.json');
+                Utils::save_json($sections, $section_tmp_file);
             }
         }
     }
     unset($sections[$key]);
-    Utils::save_json($sections, 'tmp/sections.json');
-}
-
-function save_elements(array &$elements)
-{
-    static $list_page = 1;
-    if (count($elements) / MAX_OFFERS_COUNT > $list_page) {
-        // $elements = array_splice($elements, MAX_OFFERS_COUNT);
-        $list_page++;
-        Utils::pause(30);
-    }
-    Utils::save_json($elements, ELEM_FILE);
+    Utils::save_json($sections, $section_tmp_file);
 }
 
 unset($xpath);

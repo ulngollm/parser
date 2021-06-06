@@ -58,7 +58,7 @@ class Utils
         Utils::save_json($data,  ROOT. "tmp/{$filename}", false);
     }
     public static function pause(int $sec){
-        print('timeout 30s...'.PHP_EOL);
+        print("timeout {$sec}s...".PHP_EOL);
         sleep($sec);
     }
 }
