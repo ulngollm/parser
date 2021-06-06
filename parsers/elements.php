@@ -4,18 +4,7 @@ include_once(__DIR__ . '/functions.php');
 const PARSER_NAME = 'section';
 const MAX_OFFERS_COUNT = 1000;
 
-// $modelSectionLinks = Utils::load_from_json('tmp/elem_sect_link.json');
-if (!isset($sections)) $sections = Utils::load_from_json('tmp/sections.json') ?? Utils::load_from_json('output/category.json') ?? array();
-print_r(current($sections));
-$list_page = 1;
-// die();
-$elements = array();
-$offers = array();
-$catalog = array(
-    // 'category' => &$sections,
-    'model' => &$elements,
-    'offer' => &$offers
-);
+
 //get elements list
 $xpath = array(
     'item' => '//div[contains(@class,"pr_list-item")]',
@@ -25,6 +14,10 @@ $xpath = array(
     'class' => './@class',
     'last_page_num' => '//ul[@class="pagination"]/li[not(@class)][last()]/a/span/text()'
 );
+$section_tmp_file = 'tmp/sections.json';
+const ELEM_FILE = 'output/elem.json';
+if (!isset($sections)) $sections = Utils::load_from_json('tmp/sections.json') ?? Utils::load_from_json('output/category.json') ?? die('The section list is empty');
+$elements = Utils::load_from_json('output/elem.json')?? array();
 
 foreach ($sections as $key => &$section) {
     if ($section['type'] == 'offer') {
@@ -37,7 +30,6 @@ foreach ($sections as $key => &$section) {
                 save_elements($elements);
                 Utils::save_json($sections, 'tmp/sections.json');
             }
-            print_r($elements);
         }
     }
     unset($sections[$key]);
@@ -46,40 +38,15 @@ foreach ($sections as $key => &$section) {
 
 function save_elements(array &$elements)
 {
-    global $list_page;
-    if (count($elements) > MAX_OFFERS_COUNT) {
-        $elements = array_splice($elements, MAX_OFFERS_COUNT);
+    static $list_page = 1;
+    if (count($elements) / MAX_OFFERS_COUNT > $list_page) {
+        // $elements = array_splice($elements, MAX_OFFERS_COUNT);
         $list_page++;
+        Utils::pause(30);
     }
-    Utils::save_json($elements, "output/elements_{$list_page}.json");
+    Utils::save_json($elements, ELEM_FILE);
 }
 
-Logger::show_progress('s');
 unset($xpath);
-print(count($elements) . PHP_EOL);
 
 
-// include_once(__DIR__ . '/detail.php');
-
-
-
-
-
-
-// $total_count = count($offers) + count($elements);
-// // print_r("Complete. Total elem count is $count\n");
-// printf("Total offer count is %d\n", count($offers));
-// printf("Total elements count is %d\n", count($elements));
-
-//todo:: generate xml
-
-
-// register_shutdown_function('total_result', $sections, $elements, $offers_only);
-// register_shutdown_function('save', $catalog);
-// register_shutdown_function('convert', PARSER_NAME . '_catalog.json');
-
-// function save($catalog)
-// {
-//     Utils::save_progress($catalog);
-//     echo 'Скрипт завершился нормас';
-// }

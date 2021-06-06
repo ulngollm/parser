@@ -9,19 +9,21 @@ class OfferListParser extends SectionParser
     {
         parent::__construct($url, $section_code);
         $this->elements = &$elements;
+        self::$section_link_list = Utils::load_from_json(self::SECTION_LINKS_FILENAME) ?? array();
     }
     public function get_elements_list(array $xpath, ?callable $get_type = null)
     {
-        self::$section_link_list = Utils::load_from_json(self::SECTION_LINKS_FILENAME) ?? array();
         // print_r(self::$section_link_list);
         $elements = $this->query($xpath['item']);
         foreach ($elements as $element) {
             $offer = $this->get_one_element_data($element, $xpath, $get_type);
-            // print_r($offer);//@debug 
-            $this->add_offer($offer);
+            if($offer){
+                $this->add_offer($offer);
+                print_r($offer['id'] . PHP_EOL); //@debug 
+            }
         }
     }
-    private function get_one_element_data(DOMNode $element, array $xpath, ?callable $get_type = null)
+    private function get_one_element_data(DOMNode $element, array $xpath, ?callable $get_type = null) : ?array
     {
         $id = $this->parse_single_value($xpath['id'], $element);
         self::prepare_id($id);
@@ -29,27 +31,25 @@ class OfferListParser extends SectionParser
         $link = $this->parse_single_value($xpath['link'], $element);
         $type = $get_type ? $get_type($this, $element, $xpath) : null;
 
-        $element_data = array(
-            'id' => $id,
-            'type' => $type,
-            'name' => $name,
-            'section' => $this->section_code,
-            'link' => $link
-        );
-        return $element_data;
+        if (!self::exist_exclude_brand($name))
+            return array(
+                'id' => $id,
+                'type' => $type,
+                'name' => $name,
+                'section' => $this->section_code,
+                'link' => $link
+            );
+        else return null;
     }
 
     public function add_offer($element)
     {
         $id = $element['id'];
-        $name = $element['name'];
-        if (!self::exist_exclude_brand($name))
-            if (!$this->elem_exist($id)) {
-                // echo 'new';
-                $this->add_new_elem($this->elements, $element);
-            } else {
-                $this->add_section_link($id);
-            }
+        if (!$this->elem_exist($id)) {
+            $this->add_new_elem($this->elements, $element);
+        } else {
+            $this->add_section_link($id);
+        }
     }
 
     public static function prepare_id(&$id)

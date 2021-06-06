@@ -52,6 +52,7 @@ function get_elements_list(array &$section, array &$elements, array $xpath, $pag
     list('link'=>$url, 'code'=>$section_code) =  $section;
 
     $url = BASE_URL."$url?PAGEN_1=$page";
+    print($url . PHP_EOL);
     $parser = new OfferListParser($url, $elements, $section_code);
     $parser->get_elements_list($xpath, 'get_offer_type');
     $section['lastPage'] = $page;
