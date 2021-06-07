@@ -41,17 +41,30 @@ function get_offers_list(Offer $parser, int $model_id, array &$elements)
 
     $offers_ajax_url = BASE_URL . '/local/templates/main/components/bitrix/catalog/.default/dvs/catalog.element/.default/ajax.php?tabId=%d&itemId=%d';
     for ($tab_id = 0; $tab_id <= $max_tab_id; $tab_id++) {
-        $offers = new VariationList($offers_ajax_url, $tab_id, $model_id);
-        $offers->get_offers_list_page($elements, $model_id);
-        Logger::show_progress('o');
+        $pid = pcntl_fork();
+        if ($pid) {
+            $pids[] = $pid;
+            // echo 'Parent proc';
+            if ($tab_id == $max_tab_id) {
+                foreach ($pids as $pid) {
+                    pcntl_waitpid($pid, $status);
+                    echo $status . PHP_EOL;
+                }
+            }
+        } else {
+            $offers = new VariationList($offers_ajax_url, $tab_id, $model_id);
+            $offers->get_offers_list_page($elements, $model_id);
+            Logger::show_progress('o');
+            die();
+        }
     }
 }
 
 function get_elements_list(array &$section, array &$elements, array $xpath, $page = 1)
 {
-    list('link'=>$url, 'code'=>$section_code) =  $section;
+    list('link' => $url, 'code' => $section_code) =  $section;
 
-    $url = BASE_URL."$url?PAGEN_1=$page";
+    $url = BASE_URL . "$url?PAGEN_1=$page";
     print($url . PHP_EOL);
     $parser = new OfferListParser($url, $elements, $section_code);
     $parser->get_elements_list($xpath, 'get_offer_type');
@@ -82,7 +95,7 @@ function save_elements(array &$elements)
     if (count($elements) / MAX_OFFERS_COUNT > $list_page) {
         // $elements = array_splice($elements, MAX_OFFERS_COUNT);
         $list_page++;
-        print(count($elements).PHP_EOL);
+        print(count($elements) . PHP_EOL);
         // Utils::pause(10);
     }
     Utils::save_json($elements, ELEM_FILE);

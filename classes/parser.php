@@ -2,9 +2,11 @@
 class Parser
 {
     public DOMXPath $parser;
+    private string $hashname;
 
     public function __construct($url)
     {
+        $this->hashname = ROOT . "/cache/" . md5($url) . ".html";
         $html = new DOMDocument();
         libxml_use_internal_errors(true);
         $page = $this->get_page($url);
@@ -12,9 +14,18 @@ class Parser
         $this->parser = new DOMXPath($html);
     }
 
+    public function __destruct()
+    {
+        if (file_exists($this->hashname)) {
+            echo $this->hashname;
+            unlink($this->hashname);
+        }
+        // die();
+    }
+
     private function get_page($url)
     {
-        $page_cache = self::load_from_cache($url);
+        $page_cache = $this->load_from_cache($url);
         if ($page_cache) {
             $page = $page_cache;
             echo 'cache';
@@ -23,13 +34,13 @@ class Parser
             curl_setopt($id, CURLOPT_RETURNTRANSFER, 1);
             $page = curl_exec($id);
             curl_close($id);
-            file_put_contents(ROOT . "/cache/" . md5($url) . ".html", $page);
+            file_put_contents($this->hashname, $page);
         }
         return $page;
     }
-    public static function load_from_cache($url)
+    public function load_from_cache()
     {
-        $filename = ROOT . "/cache/" . md5($url). ".html";
+        $filename = $this->hashname;
         if (file_exists($filename)) {
             return file_get_contents($filename);
         } else return null;
