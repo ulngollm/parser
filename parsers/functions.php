@@ -1,5 +1,5 @@
 <?php
-
+const BASE_URL = 'https://home-heat.ru';
 function set_offers_name(array &$offers, string $name)
 {
     foreach ($offers as &$offer) {
