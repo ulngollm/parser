@@ -3,37 +3,21 @@ class Parser
 {
     public DOMXPath $parser;
 
-    public function __construct($url)
+    public function __construct(string $html)
     {
-        $html = new DOMDocument();
         libxml_use_internal_errors(true);
-        $page = $this->get_page($url);
-        $html->loadHTML($page);
-        $this->parser = new DOMXPath($html);
+
+        $doc = new DOMDocument();
+        $doc->loadHTML($html);
+        $this->parser = new DOMXPath($doc);
     }
 
-    private function get_page($url)
-    {
-        $page_cache = self::load_from_cache($url);
-        if ($page_cache) {
-            $page = $page_cache;
-            echo 'cache';
-        } else {
-            $id = curl_init($url);
-            curl_setopt($id, CURLOPT_RETURNTRANSFER, 1);
-            $page = curl_exec($id);
-            curl_close($id);
-            file_put_contents(ROOT . "/cache/" . md5($url) . ".html", $page);
-        }
-        return $page;
+    public static function fromUrl($url){
+        $page = Downloader::get_page($url);
+        $parser =  new Parser($page);
+        return $parser;
     }
-    public static function load_from_cache($url)
-    {
-        $filename = ROOT . "/cache/" . md5($url). ".html";
-        if (file_exists($filename)) {
-            return file_get_contents($filename);
-        } else return null;
-    }
+    
     public function query(string $query, DOMNode $contextNode = null)
     {
         return $this->parser->query($query, $contextNode);
